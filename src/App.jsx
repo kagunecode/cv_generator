@@ -1,8 +1,12 @@
-import { useState } from "react";
-import "./App.css";
+import React from "react";
+import Navbar from "./components/Navbar";
 
 function App() {
-	return <></>;
+	return (
+		<div className="h-screen">
+			<Navbar></Navbar>
+		</div>
+	);
 }
 
 export default App;
