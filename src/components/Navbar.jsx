@@ -4,11 +4,12 @@ function Items(props) {
 	const itemList = props.navbarTabs.map((tab) => {
 		return (
 			<li
-				className="px-3 text-slate-400 font-medium hover:cursor-default duration-200 hover:bg-slate-700 rounded-2xl hover:text-white hover:rounded-none"
+				className="relative group overflow-hidden px-3 text-slate-400 font-medium hover:cursor-default duration-200 hover:text-white"
 				key={tab.tabName}
 				onClick={() => props.onTabClick(tab)}
 			>
 				{tab.tabName}
+				<div className="absolute group-hover:translate-y-[-1.5rem] left-0 bg-slate-700 w-full h-full z-[-10] duration-150"></div>
 			</li>
 		);
 	});
