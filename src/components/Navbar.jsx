@@ -4,7 +4,7 @@ function Items(props) {
 	const itemList = props.navbarTabs.map((tab) => {
 		return (
 			<li
-				className="px-3 text-slate-400 font-semibold hover:text-black hover:cursor-default duration-150"
+				className="px-3 text-slate-400 font-semibold hover:cursor-default duration-200 hover:bg-slate-700 rounded-3xl hover:text-white hover:rounded-none"
 				key={tab}
 			>
 				{tab}
@@ -32,7 +32,7 @@ function Navbar() {
 			}}
 		>
 			<Items navbarTabs={navbarTabs.reverse()}></Items>
-			<h1 className="text-3xl font-bold rotate-90 ml-2 px-5 hover:rotate-180 duration-300 hover:cursor-default">
+			<h1 className="text-3xl font-bold rotate-90 ml-2 px-5 hover:rotate-180 duration-200 hover:cursor-default">
 				L
 			</h1>
 		</div>
