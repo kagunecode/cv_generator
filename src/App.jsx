@@ -5,7 +5,7 @@ import Mainform from "./components/Mainform";
 import sectionInfo from "./data/sectionInfo";
 
 function App() {
-	const [activeTab, setActiveTab] = useState(null);
+	const [activeTab, setActiveTab] = useState(sectionInfo);
 
 	function handleTabClick(tab) {
 		console.log(tab);
