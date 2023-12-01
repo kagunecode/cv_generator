@@ -4,7 +4,7 @@ function Items(props) {
 	const itemList = props.navbarTabs.map((tab) => {
 		return (
 			<li
-				className="relative group overflow-hidden px-3 text-slate-400 font-medium hover:cursor-default duration-200 hover:text-white"
+				className="relative group overflow-hidden px-3 text-slate-400 hover:cursor-default duration-200 hover:text-white"
 				key={tab.tabName}
 				onClick={() => props.onTabClick(tab)}
 			>
