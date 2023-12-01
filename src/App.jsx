@@ -3,9 +3,10 @@ import setState from "react";
 import Navbar from "./components/Navbar";
 import Mainform from "./components/Mainform";
 import sectionInfo from "./data/sectionInfo";
+import General from "./pages/General";
 
 function App() {
-	const [activeTab, setActiveTab] = useState(sectionInfo);
+	const [activeTab, setActiveTab] = useState(sectionInfo[0]);
 
 	function handleTabClick(tab) {
 		console.log(tab);
@@ -18,8 +19,8 @@ function App() {
 				sectionInfo={sectionInfo}
 				handleTabClick={handleTabClick}
 			></Navbar>
-			<div className="w-[calc(100vw-3rem)] translate-x-[3rem] p-3">
-				<Mainform activeTab={activeTab}></Mainform>
+			<div className="w-[calc(60vw-3rem)] translate-x-[3rem] p-3">
+				{activeTab.tabName === "General" && <General></General>}
 			</div>
 		</div>
 	);
