@@ -18,7 +18,7 @@ function Fields(props) {
 	return <form>{fieldsContent}</form>;
 }
 
-function Form({ formFields }) {
+function Forms({ formFields }) {
 	return (
 		<>
 			<Fields formFields={formFields}></Fields>
@@ -26,4 +26,4 @@ function Form({ formFields }) {
 	);
 }
 
-export default Form;
+export default Forms;
