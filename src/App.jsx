@@ -3,7 +3,7 @@ import setState from "react";
 import Navbar from "./components/Navbar";
 import Mainform from "./components/Mainform";
 import sectionInfo from "./data/sectionInfo";
-import General from "./pages/General";
+import General from "./routes/General";
 
 function App() {
 	const [activeTab, setActiveTab] = useState(sectionInfo[0]);
