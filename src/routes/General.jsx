@@ -6,11 +6,11 @@ function General() {
 		(section) => section.sectionName === "General"
 	);
 	return (
-		<>
+		<div>
 			<h1 className="text-5xl font-semibold">General</h1>
 			<p>All your basic information goes here</p>
 			<Forms formFields={generalForm.fields}></Forms>
-		</>
+		</div>
 	);
 }
 
