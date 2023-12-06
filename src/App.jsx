@@ -1,27 +1,21 @@
-import React, { useState } from "react";
-import setState from "react";
-import Navbar from "./components/Navbar";
-import Mainform from "./components/Mainform";
+import { Routes, Route, useLocation } from "react-router-dom";
 import sectionInfo from "./data/sectionInfo";
+
+import Navbar from "./components/Navbar";
+import ErrorPage from "./routes/ErrorPage";
+import Layout from "./components/Layout";
 import General from "./routes/General";
 
 function App() {
-	const [activeTab, setActiveTab] = useState(sectionInfo[0]);
-
-	function handleTabClick(tab) {
-		console.log(tab);
-		setActiveTab(tab);
-	}
-
+	const location = useLocation();
 	return (
 		<div className="h-screen">
-			<Navbar
-				sectionInfo={sectionInfo}
-				handleTabClick={handleTabClick}
-			></Navbar>
-			<div className="w-[calc(60vw-3rem)] translate-x-[3rem] p-3">
-				{activeTab.tabName === "General" && <General></General>}
-			</div>
+			<Navbar sectionInfo={sectionInfo}></Navbar>
+			<Routes location={location} key={location.pathname}>
+				<Route path="/general" element={<Layout toRender={General()} />} />
+				<Route index element={<></>} />
+				<Route path="*" element={<ErrorPage />} />
+			</Routes>
 		</div>
 	);
 }
