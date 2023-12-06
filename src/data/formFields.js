@@ -9,6 +9,13 @@ const formFields = [
 			{ id: "location", fieldName: "Location", fieldType: "text" },
 		],
 	},
+	{
+		sectionName: "Experience",
+		fields: [
+			{ id: "jobname", fieldName: "Company Name", fieldType: "text" },
+			{ id: "charge", fieldName: "Position", fieldType: "text" },
+		],
+	},
 ];
 
 export default formFields;
