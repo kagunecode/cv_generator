@@ -7,7 +7,7 @@ function Experience() {
 		(section) => section.sectionName === "Experience"
 	);
 	return (
-		<AnimatedPage>
+		<AnimatedPage renderNum={experienceForm.fields.length}>
 			<div>
 				<h1 className="text-5xl font-semibold">Experience</h1>
 				<p>Add previous jobs related to the job you're applying to</p>
