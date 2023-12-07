@@ -8,6 +8,7 @@ import ErrorPage from "./routes/ErrorPage";
 import Layout from "./components/Layout";
 import General from "./routes/General";
 import Experience from "./routes/Experience";
+import Welcome from "./routes/Welcome";
 
 function App() {
 	const location = useLocation();
@@ -21,7 +22,7 @@ function App() {
 						path="/experience"
 						element={<Layout toRender={Experience()} />}
 					/>
-					<Route index element={<></>} />
+					<Route index element={<Layout toRender={Welcome()} />} />
 					<Route path="*" element={<ErrorPage />} />
 				</Routes>
 			</AnimatePresence>
