@@ -10,19 +10,41 @@ import General from "./routes/General";
 import Experience from "./routes/Experience";
 import Welcome from "./routes/Welcome";
 
+import cvData from "./data/cvData";
+import { useState } from "react";
+
 function App() {
 	const location = useLocation();
+	const [formData, setFormData] = useState(cvData);
 	return (
 		<div className="h-screen overflow-hidden">
 			<Navbar sectionInfo={sectionInfo}></Navbar>
 			<AnimatePresence mode="wait">
 				<Routes location={location} key={location.pathname}>
-					<Route path="/general" element={<Layout toRender={General()} />} />
+					<Route
+						path="/general"
+						element={
+							<Layout userData={formData}>
+								<General userData={formData} setFormData={setFormData} />
+							</Layout>
+						}
+					/>
 					<Route
 						path="/experience"
-						element={<Layout toRender={Experience()} />}
+						element={
+							<Layout userData={formData}>
+								<Experience userData={formData} setFormData={setFormData} />
+							</Layout>
+						}
 					/>
-					<Route index element={<Layout toRender={Welcome()} />} />
+					<Route
+						index
+						element={
+							<Layout userData={formData}>
+								<Welcome />
+							</Layout>
+						}
+					/>
 					<Route path="*" element={<ErrorPage />} />
 				</Routes>
 			</AnimatePresence>
