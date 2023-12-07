@@ -1,15 +1,10 @@
 import { motion } from "framer-motion";
+import { render } from "react-dom";
 
 const animations = {
-	initial: { opacity: 0, x: 100 },
+	initial: { opacity: 0, x: 10 },
 	animate: { opacity: 1, x: 0 },
-	exit: { opacity: 0, y: -100 },
-};
-
-const errorAnimations = {
-	initial: { opacity: 0, y: 1000 },
-	animate: { opacity: 1, y: 0 },
-	exit: { opacity: 0, y: -600 },
+	//exit: { opacity: 0, y: -10 },
 };
 
 function AnimatedPage({ children }) {
@@ -18,21 +13,7 @@ function AnimatedPage({ children }) {
 			variants={animations}
 			initial="initial"
 			animate="animate"
-			exit="exit"
-			transition={{ duration: 0.2 }}
-		>
-			{children}
-		</motion.div>
-	);
-}
-
-function AnimateError({ children }) {
-	return (
-		<motion.div
-			variants={errorAnimations}
-			initial="initial"
-			animate="animate"
-			exit="exit"
+			//exit="exit"
 			transition={{ duration: 0.3 }}
 		>
 			{children}
@@ -40,4 +21,26 @@ function AnimateError({ children }) {
 	);
 }
 
-export { AnimatedPage, AnimateError };
+const animateError = (OgComponent) => {
+	return () => (
+		<>
+			<OgComponent />
+			<motion.div
+				className="slide-in"
+				initial={{ scaleX: 0 }}
+				animate={{ scaleX: 0 }}
+				exit={{ scaleX: 1 }}
+				transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+			/>
+			<motion.div
+				className="slide-out"
+				initial={{ scaleX: 1 }}
+				animate={{ scaleX: 0 }}
+				exit={{ scaleX: 0 }}
+				transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+			/>
+		</>
+	);
+};
+
+export { AnimatedPage, animateError };
