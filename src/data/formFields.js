@@ -12,8 +12,8 @@ const formFields = [
 	{
 		sectionName: "Experience",
 		fields: [
-			{ id: "jobname", fieldName: "Company Name", fieldType: "text" },
-			{ id: "charge", fieldName: "Position", fieldType: "text" },
+			{ id: "company", fieldName: "Company Name", fieldType: "text" },
+			{ id: "position", fieldName: "Position", fieldType: "text" },
 		],
 	},
 ];
