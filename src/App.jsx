@@ -1,5 +1,5 @@
 // Libraries
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 
 // Components
 import Navbar from "./components/Navbar";
@@ -11,42 +11,40 @@ import Welcome from "./routes/Welcome";
 
 // Styles
 import "./styles/styles.css";
-import { AnimatePresence } from "framer-motion";
 
 function App() {
 	const location = useLocation();
+
 	return (
-		<div className="h-screen overflow-hidden">
-			<Navbar></Navbar>
-			<AnimatePresence mode="wait">
-				<Routes location={location} key={location.pathname}>
-					<Route
-						path="/general"
-						element={
-							<Layout>
-								<General />
-							</Layout>
-						}
-					/>
-					<Route
-						path="/experience"
-						element={
-							<Layout>
-								<Experience />
-							</Layout>
-						}
-					/>
-					<Route
-						index
-						element={
-							<Layout>
-								<Welcome />
-							</Layout>
-						}
-					/>
-					<Route path="*" element={<ErrorPage />} />
-				</Routes>
-			</AnimatePresence>
+		<div className="h-screen">
+			<Navbar />
+			<Routes location={location} key={location.pathname}>
+				<Route
+					path="/general"
+					element={
+						<Layout>
+							<General />
+						</Layout>
+					}
+				/>
+				<Route
+					path="/experience"
+					element={
+						<Layout>
+							<Experience />
+						</Layout>
+					}
+				/>
+				<Route
+					index
+					element={
+						<Layout>
+							<Welcome />
+						</Layout>
+					}
+				/>
+				<Route path="*" element={<Navigate to="/error" replace />} />
+			</Routes>
 		</div>
 	);
 }
