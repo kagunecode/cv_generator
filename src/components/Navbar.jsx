@@ -29,9 +29,12 @@ function Navbar() {
 				}}
 			>
 				<Items navbarTabs={sectionInfo.reverse()}></Items>
-				<h1 className="text-3xl font-bold rotate-90 ml-2 px-5 hover:rotate-180 duration-200 hover:cursor-default">
+				<Link
+					to={"/"}
+					className="text-3xl font-bold rotate-90 ml-2 px-5 hover:rotate-180 duration-200 hover:cursor-pointer"
+				>
 					L
-				</h1>
+				</Link>
 			</div>
 		</AnimatedPage>
 	);
