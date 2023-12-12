@@ -13,7 +13,7 @@ function PreviewCV() {
 			<p className="font-light">{data.generalInfo[0].location}</p>
 			{data.experience.map((job) => {
 				return (
-					<>
+					<div key={job.id}>
 						<h1 className="font-bold">{job.company}</h1>
 						<p className="font-light">{job.position}</p>
 						<div className="flex gap-2">
@@ -22,7 +22,7 @@ function PreviewCV() {
 							<p className="font-light">{job.endDate}</p>
 						</div>
 						<p className="font-light">{job.description}</p>
-					</>
+					</div>
 				);
 			})}
 		</div>
