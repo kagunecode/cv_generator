@@ -9,9 +9,6 @@ import General from "./routes/General";
 import Experience from "./routes/Experience";
 import Welcome from "./routes/Welcome";
 
-// Data
-import sectionInfo from "./data/sectionInfo";
-
 // Styles
 import "./styles/styles.css";
 import { AnimatePresence } from "framer-motion";
@@ -20,7 +17,7 @@ function App() {
 	const location = useLocation();
 	return (
 		<div className="h-screen overflow-hidden">
-			<Navbar sectionInfo={sectionInfo}></Navbar>
+			<Navbar></Navbar>
 			<AnimatePresence mode="wait">
 				<Routes location={location} key={location.pathname}>
 					<Route

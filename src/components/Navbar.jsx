@@ -1,5 +1,6 @@
 import "../styles/styles.css";
 import { Link } from "react-router-dom";
+import sectionInfo from "../data/sectionInfo";
 
 function Items(props) {
 	const itemList = props.navbarTabs.map((tab) => {
@@ -16,7 +17,7 @@ function Items(props) {
 	return <ul className="flex">{itemList.reverse()}</ul>;
 }
 
-function Navbar({ sectionInfo }) {
+function Navbar() {
 	return (
 		<div
 			className="w-[100vh] h-12 fixed flex items-center justify-end py-2 px-2 border"
