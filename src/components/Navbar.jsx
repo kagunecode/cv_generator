@@ -1,6 +1,7 @@
 import "../styles/styles.css";
 import { Link } from "react-router-dom";
 import sectionInfo from "../data/sectionInfo";
+import { AnimatedPage } from "./AnimatedPage";
 
 function Items(props) {
 	const itemList = props.navbarTabs.map((tab) => {
@@ -19,18 +20,20 @@ function Items(props) {
 
 function Navbar() {
 	return (
-		<div
-			className="w-[100vh] h-12 fixed flex items-center justify-end py-2 px-2 border"
-			style={{
-				transform: "rotate(-90deg) translate(-100%, 0)",
-				transformOrigin: "left top",
-			}}
-		>
-			<Items navbarTabs={sectionInfo.reverse()}></Items>
-			<h1 className="text-3xl font-bold rotate-90 ml-2 px-5 hover:rotate-180 duration-200 hover:cursor-default">
-				L
-			</h1>
-		</div>
+		<AnimatedPage>
+			<div
+				className="w-[100vh] h-12 fixed flex items-center justify-end py-2 px-2 border"
+				style={{
+					transform: "rotate(-90deg) translate(-100%, 0)",
+					transformOrigin: "left top",
+				}}
+			>
+				<Items navbarTabs={sectionInfo.reverse()}></Items>
+				<h1 className="text-3xl font-bold rotate-90 ml-2 px-5 hover:rotate-180 duration-200 hover:cursor-default">
+					L
+				</h1>
+			</div>
+		</AnimatedPage>
 	);
 }
 
