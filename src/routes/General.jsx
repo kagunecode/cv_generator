@@ -7,7 +7,7 @@ function General() {
 		(section) => section.sectionName === "General"
 	);
 	return (
-		<AnimatedPage renderNum={generalForm.fields.length}>
+		<AnimatedPage>
 			<div>
 				<h1 className="text-5xl font-semibold">General</h1>
 				<p>All your basic information goes here</p>

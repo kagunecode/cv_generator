@@ -40,7 +40,7 @@ function Experience() {
 		console.log(data.experience);
 	}
 	return (
-		<AnimatedPage renderNum={experienceForm.fields.length}>
+		<AnimatedPage>
 			<h1 className="text-5xl font-semibold">Experience</h1>
 			<p>Add previous jobs related to the job you're applying to</p>
 			<button
