@@ -4,7 +4,7 @@ export default function Layout({ children }) {
 	return (
 		<div className="grid grid-cols-3 w-[calc(100vw-3rem)] h-full translate-x-[3rem] p-3">
 			<div className="col-span-2">{children}</div>
-			<div className="bg-slate-200 p-2 col-span-1">
+			<div className="bg-slate-200 p-2 col-span-1 h-full">
 				<PreviewCV></PreviewCV>
 			</div>
 		</div>
