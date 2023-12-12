@@ -8,7 +8,6 @@ function Fields({ formFields, sectionName, index }) {
 			[sectionName]: prevData[sectionName].map((item, i) =>
 				i === index ? { ...item, [fieldId]: value } : item
 			),
-			[fieldId]: value,
 		}));
 	};
 	const fieldsContent = formFields.map((field) => {
