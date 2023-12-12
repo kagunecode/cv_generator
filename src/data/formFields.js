@@ -14,6 +14,9 @@ const formFields = [
 		fields: [
 			{ id: "company", fieldName: "Company Name", fieldType: "text" },
 			{ id: "position", fieldName: "Position", fieldType: "text" },
+			{ id: "startDate", fieldName: "From", fieldType: "text" },
+			{ id: "endDate", fieldName: "To", fieldType: "text" },
+			{ id: "description", fieldName: "Details", fieldType: "text" },
 		],
 	},
 ];
