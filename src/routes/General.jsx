@@ -2,7 +2,7 @@ import Forms from "../components/Forms";
 import formFields from "../data/formFields";
 import { AnimatedPage } from "../components/AnimatedPage";
 
-function General({ userData, setFormData }) {
+function General() {
 	const generalForm = formFields.find(
 		(section) => section.sectionName === "General"
 	);
@@ -13,8 +13,6 @@ function General({ userData, setFormData }) {
 				<p>All your basic information goes here</p>
 				<Forms
 					formFields={generalForm.fields}
-					userData={userData}
-					setFormData={setFormData}
 					sectionName="generalInfo"
 					index={0}
 				></Forms>
