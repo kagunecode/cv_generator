@@ -16,6 +16,12 @@ function PreviewCV() {
 					<>
 						<h1 className="font-bold">{job.company}</h1>
 						<p className="font-light">{job.position}</p>
+						<div className="flex gap-2">
+							<p className="font-light">{job.startDate}</p>
+							{job.startDate != "" ? <p className="font-bold">-</p> : null}
+							<p className="font-light">{job.endDate}</p>
+						</div>
+						<p className="font-light">{job.description}</p>
 					</>
 				);
 			})}
