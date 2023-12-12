@@ -5,7 +5,8 @@ const cvData = {
 			title: "Web Developer",
 			email: "jhondoe@gmail.com",
 			phone: "999999999",
-			location: "New York - USA",
+			country: "United States",
+			city: "New York",
 		},
 	],
 	experience: [
