@@ -20,7 +20,7 @@ function Fields({ formFields, userData, setFormData, sectionName, index }) {
 					className="w-[60%] h-9 bg-zinc-200 rounded px-1"
 					type={field.fieldType}
 					id={field.id}
-					value={userData[sectionName][0][field.id]}
+					value={userData[sectionName][index][field.id]}
 					onChange={(e) => handleInputChange(field.id, e.target.value)}
 				/>
 			</div>
