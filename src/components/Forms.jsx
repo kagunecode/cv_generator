@@ -1,8 +1,9 @@
-import React from "react";
+import { useDataContext } from "../contexts/DataContext";
 
-function Fields({ formFields, userData, setFormData, sectionName, index }) {
+function Fields({ formFields, sectionName, index }) {
+	const { data, setData } = useDataContext();
 	const handleInputChange = (fieldId, value) => {
-		setFormData((prevData) => ({
+		setData((prevData) => ({
 			...prevData,
 			[sectionName]: prevData[sectionName].map((item, i) =>
 				i === index ? { ...item, [fieldId]: value } : item
@@ -20,7 +21,7 @@ function Fields({ formFields, userData, setFormData, sectionName, index }) {
 					className="w-[60%] h-9 bg-zinc-200 rounded px-1"
 					type={field.fieldType}
 					id={field.id}
-					value={userData[sectionName][index][field.id]}
+					value={data[sectionName][index][field.id]}
 					onChange={(e) => handleInputChange(field.id, e.target.value)}
 				/>
 			</div>
@@ -29,13 +30,11 @@ function Fields({ formFields, userData, setFormData, sectionName, index }) {
 	return <form>{fieldsContent}</form>;
 }
 
-function Forms({ formFields, userData, setFormData, sectionName, index }) {
+function Forms({ formFields, sectionName, index }) {
 	return (
 		<>
 			<Fields
 				formFields={formFields}
-				userData={userData}
-				setFormData={setFormData}
 				sectionName={sectionName}
 				index={index}
 			></Fields>
