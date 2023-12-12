@@ -10,7 +10,7 @@ const cvData = {
 	],
 	experience: [
 		{
-			id: 1,
+			id: 0,
 			position: "Software Engineer",
 			company: "Tech Co",
 			startDate: "2020-01-01",
