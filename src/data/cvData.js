@@ -13,9 +13,26 @@ const cvData = {
 			id: 0,
 			position: "Software Engineer",
 			company: "Tech Co",
-			startDate: "2020-01-01",
-			endDate: "2021-12-31",
+			startDate: "Jan 2021",
+			endDate: "May 2023",
 			description: "Worked on exciting projects...",
+		},
+	],
+	education: [
+		{
+			id: 0,
+			institution: "Harvard University",
+			title: "Electronic Engineer",
+			location: "Cambridge - Massachussets",
+			start: "2017",
+			end: "2023",
+		},
+	],
+	skills: [
+		{
+			id: 0,
+			name: "React",
+			proficiency: 4,
 		},
 	],
 };
