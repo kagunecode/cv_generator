@@ -1,20 +1,18 @@
 import formFields from "../data/formFields";
 import Forms from "../components/Forms";
 import { AnimatedPage } from "../components/AnimatedPage";
-import cvData from "../data/cvData";
-import { useState } from "react";
+
+import { useDataContext } from "../contexts/DataContext";
 
 const experienceForm = formFields.find(
 	(section) => section.sectionName === "Experience"
 );
 
-function Jobs({ userData, setFormData, index }) {
+function Jobs({ index }) {
 	return (
 		<div>
 			<Forms
 				formFields={experienceForm.fields}
-				userData={userData}
-				setFormData={setFormData}
 				sectionName="experience"
 				index={index}
 				key={index}
@@ -23,7 +21,8 @@ function Jobs({ userData, setFormData, index }) {
 	);
 }
 
-function Experience({ userData, setFormData }) {
+function Experience() {
+	const { data, setData } = useDataContext();
 	const newData = {
 		id: 0,
 		position: "",
@@ -33,12 +32,12 @@ function Experience({ userData, setFormData }) {
 		description: "",
 	};
 	function handleAddJob() {
-		const newJob = { ...newData, id: userData.experience.length };
-		setFormData((prevData) => ({
+		const newJob = { ...newData, id: data.experience.length };
+		setData((prevData) => ({
 			...prevData,
 			experience: [...prevData.experience, newJob],
 		}));
-		console.log(userData.experience);
+		console.log(data.experience);
 	}
 	return (
 		<AnimatedPage renderNum={experienceForm.fields.length}>
@@ -51,16 +50,9 @@ function Experience({ userData, setFormData }) {
 				Add Job
 			</button>
 			<div className="bg-slate-100 p-4 mr-5">
-				{userData.experience.map((exp) => {
+				{data.experience.map((exp) => {
 					console.log(exp);
-					return (
-						<Jobs
-							userData={userData}
-							setFormData={setFormData}
-							index={exp.id}
-							key={exp.id}
-						/>
-					);
+					return <Jobs index={exp.id} key={exp.id} />;
 				})}
 			</div>
 		</AnimatedPage>
