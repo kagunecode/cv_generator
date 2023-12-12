@@ -10,7 +10,8 @@ function PreviewCV() {
 			</div>
 			<p className="font-light">{data.generalInfo[0].email}</p>
 			<p className="font-light">{data.generalInfo[0].phone}</p>
-			<p className="font-light">{data.generalInfo[0].location}</p>
+			<p className="font-light">{data.generalInfo[0].country}</p>
+			<p className="font-light">{data.generalInfo[0].city}</p>
 			{data.experience.map((job) => {
 				return (
 					<div key={job.id}>
