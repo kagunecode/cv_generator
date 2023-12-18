@@ -49,13 +49,13 @@ function GeneralForm() {
   };
 
   return (
-    <div className="row-auto mr-5 mt-5 grid grid-cols-1 gap-y-4 border-2 border-slate-300 p-5 md:grid-cols-2">
+    <div className="row-auto mr-5 mt-5 grid grid-cols-1 gap-y-4 border bg-zinc-50 p-5 md:grid-cols-2">
       <div className="mr-4 flex flex-col">
         <label htmlFor="fullname">Full Name</label>
         <input
           id="fullname"
           type="text"
-          className="h-8 w-full border border-slate-400 bg-slate-200 px-1"
+          className="h-8 w-full border border-zinc-300 px-1"
           onChange={e => handleInputChange('fullname', e.target.value, 0)}
           value={data.generalInfo[0].fullname}
         />
@@ -65,7 +65,7 @@ function GeneralForm() {
         <input
           id="title"
           type="text"
-          className="mr-4 h-8 border border-slate-400 bg-slate-200 px-1"
+          className="mr-4 h-8 border border-zinc-300 px-1"
           onChange={e => handleInputChange('title', e.target.value, 0)}
           value={data.generalInfo[0].title}
         />
@@ -75,7 +75,7 @@ function GeneralForm() {
         <input
           id="email"
           type="text"
-          className="mr-4 h-8 border border-slate-400 bg-slate-200 px-1"
+          className="mr-4 h-8 border border-zinc-300 px-1"
           onChange={e => handleInputChange('email', e.target.value, 0)}
           value={data.generalInfo[0].email}
         />
@@ -85,7 +85,7 @@ function GeneralForm() {
         <input
           id="phone"
           type="text"
-          className="mr-4 h-8 border border-slate-400 bg-slate-200 px-1"
+          className="mr-4 h-8 border border-zinc-300 px-1"
           onChange={e => handleInputChange('phone', e.target.value, 0)}
           value={data.generalInfo[0].phone}
         />
@@ -94,7 +94,7 @@ function GeneralForm() {
         <label htmlFor="location">Country</label>
         <select
           id="location"
-          className="mr-4 h-8 border border-slate-400 bg-slate-200 px-1"
+          className="mr-4 h-8 border border-zinc-300 px-1"
           onChange={e => handleInputChange('country', e.target.value, 0)}
           value={data.generalInfo[0].country}
         >
@@ -111,7 +111,7 @@ function GeneralForm() {
         <label htmlFor="location">City</label>
         <input
           id="location"
-          className="mr-4 h-8 border border-slate-400 bg-slate-200 px-1"
+          className="mr-4 h-8 border border-zinc-300 px-1"
           onChange={e => handleInputChange('city', e.target.value, 0)}
           value={data.generalInfo[0].city}
         ></input>
