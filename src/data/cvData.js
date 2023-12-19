@@ -19,6 +19,7 @@ const cvData = {
       endDate: 'May',
       endYear: '2023',
       description: 'Worked on exciting projects...',
+      status: true,
     },
   ],
   education: [
