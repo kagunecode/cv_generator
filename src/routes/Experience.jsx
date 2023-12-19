@@ -62,14 +62,12 @@ function JobRender() {
   const cardVariants = {
     open: {
       opacity: 1,
-      y: 0,
       display: 'grid',
       visibility: 'visible',
       pointerEvents: 'auto',
     },
     closed: {
       opacity: 0,
-      y: -50,
       height: '0px',
       visibility: 'visible',
       pointerEvents: 'none',
@@ -89,7 +87,7 @@ function JobRender() {
         initial="initial"
         animate="animate"
         exit="exit"
-        transition={{ duration: 0.2 }}
+        transition={{ duration: 0.1 }}
         key={job.id}
       >
         <div className="flex items-center justify-between">
@@ -282,7 +280,7 @@ function Experience() {
       <div className="flex justify-center px-6">
         <button
           onClick={handleAddJob}
-          className="border px-7 py-2 font-semibold text-slate-500 duration-200 hover:bg-emphasis-500 hover:text-black"
+          className="border px-10 py-2 font-semibold text-slate-700 duration-200 hover:bg-emphasis-500 hover:text-black"
         >
           Add Job
         </button>
