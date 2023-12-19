@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { AnimatedPage } from '../components/AnimatedPage';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { v4 as uuidv4 } from 'uuid';
 
 import { useDataContext } from '../contexts/DataContext';
 
@@ -19,25 +21,53 @@ function JobRender() {
     'November',
     'December',
   ];
+
   const years = Array.from(
     { length: 100 },
     (_, i) => new Date().getFullYear() - i,
   );
 
-  const handleInputChange = (fieldId, value, index) => {
+  const handleInputChange = (fieldId, value, jobId) => {
     setData(prevData => ({
       ...prevData,
-      experience: prevData['experience'].map((item, i) =>
-        i === index ? { ...item, [fieldId]: value } : item,
+      experience: prevData['experience'].map(item =>
+        item.id === jobId ? { ...item, [fieldId]: value } : item,
       ),
     }));
   };
 
-  const handleDeletion = index => {};
+  const handleJobDeletion = id => {
+    setData(prevData => ({
+      ...prevData,
+      experience: prevData.experience.filter(item => item.id !== id),
+    }));
+    console.log(data);
+  };
+
+  const handleCardStatus = (jobId, value) => {
+    setData(prevData => ({
+      ...prevData,
+      experience: prevData.experience.map(item =>
+        item.id === jobId ? { ...item, status: value } : item,
+      ),
+    }));
+  };
 
   const animations = {
     initial: { opacity: 0, x: 10 },
     animate: { opacity: 1, x: 0 },
+    exit: { opacity: 0, x: 10 },
+  };
+
+  const cardVariants = {
+    open: { opacity: 1, y: 0, display: 'grid' },
+    closed: {
+      opacity: 0,
+      y: -10,
+      display: 'none',
+      height: '0px',
+      zIndex: -20,
+    },
   };
 
   const jobs = data.experience.map(job => {
@@ -47,7 +77,7 @@ function JobRender() {
         variants={animations}
         initial="initial"
         animate="animate"
-        //exit="exit"
+        exit="exit"
         transition={{ duration: 0.2 }}
         key={job.id}
       >
@@ -61,7 +91,7 @@ function JobRender() {
               strokeWidth="1.5"
               stroke="currentColor"
               className="h-6 w-6 text-slate-500 duration-200 hover:cursor-pointer hover:text-red-600"
-              onClick={() => console.log('deleting')}
+              onClick={() => handleJobDeletion(job.id)}
             >
               <path
                 strokeLinecap="round"
@@ -76,6 +106,7 @@ function JobRender() {
               strokeWidth="1.5"
               stroke="currentColor"
               className="h-6 w-6 text-slate-500 duration-200 hover:cursor-pointer hover:text-black"
+              onClick={() => handleCardStatus(job.id, !job.status)}
             >
               <path
                 strokeLinecap="round"
@@ -85,7 +116,12 @@ function JobRender() {
             </svg>
           </div>
         </div>
-        <div className="grid grid-cols-2" key={job.id}>
+        <motion.div
+          animate={job.status ? 'open' : 'closed'}
+          variants={cardVariants}
+          className="grid-cols-2"
+          key={job.id}
+        >
           <div className="flex flex-col p-2">
             <label htmlFor="">Company</label>
             <input
@@ -97,7 +133,6 @@ function JobRender() {
               }
             />
           </div>
-
           <div className="flex flex-col p-2">
             <label htmlFor="">Position</label>
             <input
@@ -109,7 +144,6 @@ function JobRender() {
               }
             />
           </div>
-
           <div className="grid grid-cols-2">
             <div className="flex flex-col p-2">
               <label htmlFor="">From</label>
@@ -144,7 +178,6 @@ function JobRender() {
                 </select>
               </div>
             </div>
-
             <div className="flex flex-col p-2">
               <label htmlFor="">To</label>
               <div className="grid grid-cols-3 gap-2">
@@ -179,7 +212,6 @@ function JobRender() {
               </div>
             </div>
           </div>
-
           <div className="flex flex-col p-2">
             <label htmlFor="">Description</label>
             <input
@@ -191,15 +223,19 @@ function JobRender() {
               }
             />
           </div>
-        </div>
+        </motion.div>
       </motion.div>
     );
   });
-  return <>{jobs}</>;
+  return <AnimatePresence>{jobs}</AnimatePresence>;
 }
 
 function Experience() {
   const { data, setData } = useDataContext();
+  const [cardState, setCardState] = useState([
+    { id: 0, status: true },
+    { id: 3, status: false },
+  ]);
   const newData = {
     id: 0,
     position: '',
@@ -209,15 +245,15 @@ function Experience() {
     endDate: '',
     endYear: '',
     description: '',
+    status: true,
   };
 
   function handleAddJob() {
-    const newJob = { ...newData, id: data.experience.length };
+    const newJob = { ...newData, id: uuidv4() };
     setData(prevData => ({
       ...prevData,
       experience: [...prevData.experience, newJob],
     }));
-    console.log(data.experience);
   }
 
   return (
@@ -230,7 +266,7 @@ function Experience() {
       <div className="flex justify-center px-6">
         <button
           onClick={handleAddJob}
-          className="bg-emphasis-500 px-7 py-2 font-semibold text-slate-500 duration-200 hover:text-black"
+          className="border px-7 py-2 font-semibold text-slate-500 duration-200 hover:bg-emphasis-500 hover:text-black"
         >
           Add Job
         </button>
