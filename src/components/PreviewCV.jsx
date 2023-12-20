@@ -5,13 +5,20 @@ function PreviewCV() {
   return (
     <div className="h-full bg-white">
       <div className="h-30 bg-emphasis-500 p-5">
+        <img
+          className="h-[150px] w-[150px] object-cover"
+          src={data.generalInfo[0].photo}
+          alt=""
+        />
         <h1 className="text-2xl font-bold">{data.generalInfo[0].fullname}</h1>
         <p className="font-light">{data.generalInfo[0].title}</p>
       </div>
+      <p className="font-light">{data.generalInfo[0].age}</p>
       <p className="font-light">{data.generalInfo[0].email}</p>
       <p className="font-light">{data.generalInfo[0].phone}</p>
       <p className="font-light">{data.generalInfo[0].country}</p>
       <p className="font-light">{data.generalInfo[0].city}</p>
+      <p className="font-light">{data.generalInfo[0].about}</p>
       {data.experience.map(job => {
         return (
           <div key={job.id}>
