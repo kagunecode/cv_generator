@@ -11,18 +11,21 @@ import ErrorPage from './routes/ErrorPage';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import DataContextProvider from './contexts/DataContext';
+import SidebarContextProvider from './contexts/SidebarContext';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <DataContextProvider>
-      <AnimatePresence mode="wait">
-        <Router>
-          <Routes>
-            <Route path="/error/*" element={<ErrorPage />} />
-            <Route path="*" element={<App />} />
-          </Routes>
-        </Router>
-      </AnimatePresence>
+      <SidebarContextProvider>
+        <AnimatePresence mode="wait">
+          <Router>
+            <Routes>
+              <Route path="/error/*" element={<ErrorPage />} />
+              <Route path="*" element={<App />} />
+            </Routes>
+          </Router>
+        </AnimatePresence>
+      </SidebarContextProvider>
     </DataContextProvider>
   </React.StrictMode>,
 );
