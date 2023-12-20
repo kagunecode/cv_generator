@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import sectionInfo from '../data/sectionInfo';
 import { AnimatedPage } from './AnimatedPage';
 
+import { useSidebarContext } from '../contexts/SidebarContext';
+
 function Items(props) {
   const itemList = props.navbarTabs.map(tab => {
     return (
@@ -19,6 +21,11 @@ function Items(props) {
 }
 
 function Navbar() {
+  const { status, setStatus } = useSidebarContext();
+
+  const handleSidebarToggle = () => {
+    setStatus(!status);
+  };
   return (
     <AnimatedPage>
       <div
@@ -30,8 +37,8 @@ function Navbar() {
       >
         <Items navbarTabs={sectionInfo.reverse()}></Items>
         <Link
-          to={'/'}
           className="ml-2 rotate-90 px-5 text-3xl font-bold duration-200 hover:rotate-180 hover:cursor-pointer"
+          onClick={handleSidebarToggle}
         >
           L
         </Link>
