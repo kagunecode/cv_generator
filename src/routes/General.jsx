@@ -1,19 +1,30 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { motion } from 'framer-motion';
 
-import { AnimatedPage } from '../components/AnimatedPage';
+import ImageUpload from '../components/ImageUpload';
 
 import { useDataContext } from '../contexts/DataContext';
 
 function General() {
+  const animations = {
+    initial: { opacity: 0, x: 10 },
+    animate: { opacity: 1, x: 0 },
+    //exit: { opacity: 0, y: -10 },
+  };
   return (
-    <AnimatedPage>
-      <div>
-        <h1 className="text-5xl font-semibold">General</h1>
-        <p>All your basic information goes here</p>
-        <GeneralForm />
-      </div>
-    </AnimatedPage>
+    <motion.div
+      variants={animations}
+      initial="initial"
+      animate="animate"
+      //exit="exit"
+      transition={{ duration: 0.3 }}
+      className="flex h-full flex-col"
+    >
+      <h1 className="text-5xl font-semibold">General</h1>
+      <p>All your basic information goes here</p>
+      <GeneralForm />
+    </motion.div>
   );
 }
 
@@ -49,15 +60,31 @@ function GeneralForm() {
   };
 
   return (
-    <div className="row-auto mr-5 mt-5 grid grid-cols-1 gap-y-4 border bg-zinc-50 p-5 md:grid-cols-2">
-      <div className="mr-4 flex flex-col">
+    <div className="row-auto mr-5 mt-5 grid flex-1 grid-cols-1 border bg-zinc-50 p-5">
+      <div className="flex flex-col">
         <label htmlFor="fullname">Full Name</label>
         <input
           id="fullname"
           type="text"
-          className="h-8 w-full border border-zinc-300 px-1"
+          className="mr-4 h-8 border border-zinc-300 px-1"
           onChange={e => handleInputChange('fullname', e.target.value, 0)}
           value={data.generalInfo[0].fullname}
+        />
+      </div>
+      <div className="flex flex-col">
+        <label htmlFor="age">
+          Age
+          <span className="text-xs text-slate-600">
+            {' '}
+            (no specific formatting)
+          </span>
+        </label>
+        <input
+          id="age"
+          type="text"
+          className="mr-4 h-8 border border-zinc-300 px-1"
+          onChange={e => handleInputChange('age', e.target.value, 0)}
+          value={data.generalInfo[0].age}
         />
       </div>
       <div className="flex flex-col">
@@ -115,6 +142,18 @@ function GeneralForm() {
           onChange={e => handleInputChange('city', e.target.value, 0)}
           value={data.generalInfo[0].city}
         ></input>
+      </div>
+      <div className="grid grid-cols-2">
+        <div className="flex flex-col">
+          <label htmlFor="about">About you</label>
+          <textarea
+            id="about"
+            className="mr-4 h-40 border border-zinc-300 p-1"
+            onChange={e => handleInputChange('about', e.target.value, 0)}
+            value={data.generalInfo[0].about}
+          />
+        </div>
+        <ImageUpload></ImageUpload>
       </div>
     </div>
   );
