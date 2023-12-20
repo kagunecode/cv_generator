@@ -134,6 +134,7 @@ function JobRender() {
             variants={cardVariants}
             className="grid grid-cols-2"
             key={job.id}
+            initial={false}
           >
             <div className="flex flex-col p-2">
               <label htmlFor="">Company</label>
