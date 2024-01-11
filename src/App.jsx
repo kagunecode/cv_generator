@@ -9,6 +9,7 @@ import General from './routes/General';
 import Experience from './routes/Experience';
 import Welcome from './routes/Welcome';
 import Sidebar from './components/Sidebar';
+import Education from './routes/Education';
 
 // Styles
 import './styles/styles.css';
@@ -49,6 +50,14 @@ function App() {
             element={
               <Layout>
                 <Experience />
+              </Layout>
+            }
+          />
+          <Route
+            path="/education"
+            element={
+              <Layout>
+                <Education />
               </Layout>
             }
           />
