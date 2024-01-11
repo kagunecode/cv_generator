@@ -10,6 +10,9 @@ import ErrorPage from './routes/ErrorPage';
 // Libraries
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+// Styles
+import './styles.css';
+
 import DataContextProvider from './contexts/DataContext';
 import SidebarContextProvider from './contexts/SidebarContext';
 

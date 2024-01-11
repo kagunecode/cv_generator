@@ -11,9 +11,6 @@ import Welcome from './routes/Welcome';
 import Sidebar from './components/Sidebar';
 import Education from './routes/Education';
 
-// Styles
-import './styles/styles.css';
-
 // Contexts
 import { useSidebarContext } from './contexts/SidebarContext';
 

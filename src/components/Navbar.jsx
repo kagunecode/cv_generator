@@ -1,4 +1,3 @@
-import '../styles/styles.css';
 import { Link } from 'react-router-dom';
 import sectionInfo from '../data/sectionInfo';
 import { AnimatedPage } from './AnimatedPage';
