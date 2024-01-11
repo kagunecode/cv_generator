@@ -7,11 +7,13 @@ function PreviewCV() {
   return (
     <div className="h-full bg-white">
       <div className="h-30 bg-emphasis-500 p-5">
-        <img
-          className="h-[150px] w-[150px] object-cover"
-          src={generalInfo.photo}
-          alt=""
-        />
+        {generalInfo.photo != null && (
+          <img
+            className="h-[150px] w-[150px] object-cover"
+            src={generalInfo.photo}
+            alt=""
+          />
+        )}
         <h1 className="text-2xl font-bold">{generalInfo.fullname}</h1>
         <p className="font-light">{generalInfo.title}</p>
       </div>
