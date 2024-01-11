@@ -1,8 +1,6 @@
-import { useDataContext } from '../contexts/DataContext';
 import { useData } from '../store';
 
 function PreviewCV() {
-  const { data } = useDataContext();
   const [generalInfo, experience] = useData(state => [
     state.generalInfo,
     state.experience,
