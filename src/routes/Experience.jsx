@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { AnimatedPage } from '../components/AnimatedPage';
 import { motion, AnimatePresence } from 'framer-motion';
 import { v4 as uuidv4 } from 'uuid';
@@ -13,34 +12,6 @@ function JobRender() {
     state.experience,
     state.updateItem,
   ]);
-  const months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ];
-
-  const years = Array.from(
-    { length: 100 },
-    (_, i) => new Date().getFullYear() - i,
-  );
-
-  const handleInputChange = (fieldId, value, jobId) => {
-    setData(prevData => ({
-      ...prevData,
-      experience: prevData['experience'].map(item =>
-        item.id === jobId ? { ...item, [fieldId]: value } : item,
-      ),
-    }));
-  };
 
   const handleJobDeletion = id => {
     setData(prevData => ({
