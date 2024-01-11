@@ -8,7 +8,7 @@ const cvData = {
     country: 'United States',
     city: 'New York',
     about: 'Say something about you!',
-    photo: '',
+    photo: null,
   },
 
   experience: [
