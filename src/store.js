@@ -10,10 +10,10 @@ const useData = create(set => ({
       generalInfo: { ...state.generalInfo, [field]: value },
     })),
 
-  updateItem: (section, index, field, value) =>
+  updateItem: (section, id, field, value) =>
     set(state => ({
       [section]: state[section].map(item =>
-        item.id === index ? { ...item, [field]: value } : item,
+        item.id === id ? { ...item, [field]: value } : item,
       ),
     })),
 
