@@ -113,27 +113,32 @@ function DateField({
   set,
   valueOne,
   valueTwo,
+  useMonth = false,
   ...props
 }) {
   return (
     <>
       <label htmlFor="">{name}</label>
       <div className="grid grid-cols-3 gap-2">
+        {useMonth && (
+          <select
+            className="col-span-2 h-8 w-full border border-zinc-300 px-1"
+            onChange={e => set(section, index, field, e.target.value)}
+            value={valueOne}
+          >
+            {months.map(month => {
+              return (
+                <option key={month} value={`${month}`}>
+                  {month}
+                </option>
+              );
+            })}
+          </select>
+        )}
         <select
-          className="col-span-2 h-8 w-full border border-zinc-300 px-1"
-          onChange={e => set(section, index, field, e.target.value)}
-          value={valueOne}
-        >
-          {months.map(month => {
-            return (
-              <option key={month} value={`${month}`}>
-                {month}
-              </option>
-            );
-          })}
-        </select>
-        <select
-          className="h-8 w-full border border-zinc-300 px-1"
+          className={`h-8 w-full border border-zinc-300 px-1 ${
+            !useMonth && 'col-span-3'
+          }`}
           onChange={e => set(section, index, fieldTwo, e.target.value)}
           value={valueTwo}
         >
