@@ -1,11 +1,8 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { motion } from 'framer-motion';
 
 import ImageUpload from '../components/ImageUpload';
 import { Field, CountryField } from '../components/Field';
 
-import { useDataContext } from '../contexts/DataContext';
 import { useData } from '../store';
 
 function General() {
@@ -114,6 +111,7 @@ function GeneralForm() {
             textArea
           />
         </div>
+        <ImageUpload />
       </div>
     </div>
   );
