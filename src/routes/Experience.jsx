@@ -2,33 +2,15 @@ import { AnimatedPage } from '../components/AnimatedPage';
 import { motion, AnimatePresence } from 'framer-motion';
 import { v4 as uuidv4 } from 'uuid';
 
-import { useDataContext } from '../contexts/DataContext';
 import { Field, DateField } from '../components/Field';
 import { useData } from '../store';
 
 function JobRender() {
-  const { data, setData } = useDataContext();
-  const [experience, updateItem] = useData(state => [
+  const [experience, updateItem, deleteItem] = useData(state => [
     state.experience,
     state.updateItem,
+    state.deleteItem,
   ]);
-
-  const handleJobDeletion = id => {
-    setData(prevData => ({
-      ...prevData,
-      experience: prevData.experience.filter(item => item.id !== id),
-    }));
-    console.log(data);
-  };
-
-  const handleCardStatus = (jobId, value) => {
-    setData(prevData => ({
-      ...prevData,
-      experience: prevData.experience.map(item =>
-        item.id === jobId ? { ...item, status: value } : item,
-      ),
-    }));
-  };
 
   const animations = {
     initial: { opacity: 0, x: 10 },
@@ -77,7 +59,7 @@ function JobRender() {
               strokeWidth="1.5"
               stroke="currentColor"
               className="h-6 w-6 text-slate-500 duration-200 hover:cursor-pointer hover:text-red-600"
-              onClick={() => handleJobDeletion(job.id)}
+              onClick={() => deleteItem('experience', job.id)}
             >
               <path
                 strokeLinecap="round"
@@ -95,7 +77,9 @@ function JobRender() {
               variants={arrowVariants}
               animate={job.status ? 'open' : 'closed'}
               transition={{ duration: 0.05 }}
-              onClick={() => handleCardStatus(job.id, !job.status)}
+              onClick={() =>
+                updateItem('experience', job.id, 'status', !job.status)
+              }
             >
               <path
                 strokeLinecap="round"
@@ -184,7 +168,7 @@ function JobRender() {
 }
 
 function Experience() {
-  const { data, setData } = useDataContext();
+  const addItem = useData(state => state.addItem);
 
   const newData = {
     id: 0,
@@ -200,10 +184,7 @@ function Experience() {
 
   function handleAddJob() {
     const newJob = { ...newData, id: uuidv4() };
-    setData(prevData => ({
-      ...prevData,
-      experience: [...prevData.experience, newJob],
-    }));
+    addItem('experience', newJob);
   }
 
   return (
