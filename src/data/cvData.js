@@ -33,6 +33,8 @@ const cvData = {
       location: 'Cambridge - Massachussets',
       start: '2017',
       end: '2023',
+      degree: 'Web Designer',
+      status: true,
     },
   ],
   skills: [
