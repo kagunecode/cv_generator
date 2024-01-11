@@ -55,6 +55,7 @@ function JobRender() {
               fieldTwo="startYear"
               valueOne={job.startDate}
               valueTwo={job.startYear}
+              useMonth
             />
           </div>
           <div className="flex flex-col p-2">
@@ -67,6 +68,7 @@ function JobRender() {
               fieldTwo="endYear"
               valueOne={job.endDate}
               valueTwo={job.endYear}
+              useMonth
             />
           </div>
         </div>
