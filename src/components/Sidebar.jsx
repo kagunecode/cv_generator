@@ -84,7 +84,7 @@ export default function Sidebar() {
     setStatus(!status);
   };
   return (
-    <div className="relative w-[25%]">
+    <div className="relative w-[25vw]">
       <motion.div
         className="absolute z-20 flex h-screen w-full bg-emphasis-500"
         variants={menuSlide}
@@ -99,7 +99,7 @@ export default function Sidebar() {
         >
           X
         </div>
-        <div className="flex h-full flex-col justify-center px-20">
+        <div className="ml-[10%] flex h-full flex-col justify-center">
           <p>Tools</p>
           <hr className="mb-2 border-black" />
           {sidebarItems.map((link, i) => {
@@ -110,9 +110,10 @@ export default function Sidebar() {
                 animate="enter"
                 exit="exit"
                 initial="initial"
+                key={i}
               >
                 <Link
-                  className="px-3 text-4xl font-bold duration-200 hover:bg-black hover:text-emphasis-500"
+                  className="px-[10%] text-4xl font-bold duration-200 hover:bg-black hover:text-emphasis-500"
                   onClick={handleSidebarToggle}
                   to={link.href}
                 >
