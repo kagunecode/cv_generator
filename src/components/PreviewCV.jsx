@@ -3,7 +3,10 @@ import { useData } from '../store';
 
 function PreviewCV() {
   const { data } = useDataContext();
-  const [generalInfo] = useData(state => [state.generalInfo]);
+  const [generalInfo, experience] = useData(state => [
+    state.generalInfo,
+    state.experience,
+  ]);
   return (
     <div className="h-full bg-white">
       <div className="h-30 bg-emphasis-500 p-5">
@@ -23,7 +26,7 @@ function PreviewCV() {
       <p className="font-light">{generalInfo.country}</p>
       <p className="font-light">{generalInfo.city}</p>
       <p className="font-light">{generalInfo.about}</p>
-      {data.experience.map(job => {
+      {experience.map(job => {
         return (
           <div key={job.id}>
             <h1 className="font-bold">{job.company}</h1>
