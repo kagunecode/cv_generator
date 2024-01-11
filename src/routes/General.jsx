@@ -3,10 +3,12 @@ import axios from 'axios';
 import { motion } from 'framer-motion';
 
 import ImageUpload from '../components/ImageUpload';
+import Field from '../components/Field';
 
 import { useDataContext } from '../contexts/DataContext';
 
 function General() {
+  // TODO: Move variants to a separate file
   const animations = {
     initial: { opacity: 0, x: 10 },
     animate: { opacity: 1, x: 0 },
@@ -32,6 +34,7 @@ function GeneralForm() {
   const { data, setData } = useDataContext();
   const [countries, setCountries] = useState([]);
 
+  // TODO: Move the fetches into their own utility module for better management
   useEffect(() => {
     axios.get('https://restcountries.com/v3.1/all').then(response => {
       const alphCountry = response.data.sort((a, b) => {
@@ -50,6 +53,7 @@ function GeneralForm() {
     });
   }, []);
 
+  // TODO: Check if the input changes can be managed with a global setter instead
   const handleInputChange = (fieldId, value, index) => {
     setData(prevData => ({
       ...prevData,
@@ -62,12 +66,12 @@ function GeneralForm() {
   return (
     <div className="row-auto mr-5 mt-5 grid flex-1 grid-cols-1 border bg-zinc-50 p-5">
       <div className="flex flex-col">
-        <label htmlFor="fullname">Full Name</label>
-        <input
-          id="fullname"
-          type="text"
+        <Field
+          name="Full Name"
+          field="fullname"
+          set={handleInputChange}
+          index={0}
           className="mr-4 h-8 border border-zinc-300 px-1"
-          onChange={e => handleInputChange('fullname', e.target.value, 0)}
           value={data.generalInfo[0].fullname}
         />
       </div>
