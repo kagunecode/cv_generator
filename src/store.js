@@ -4,6 +4,7 @@ import cvData from './data/cvData';
 const useData = create(set => ({
   generalInfo: cvData.generalInfo,
   experience: cvData.experience,
+  education: cvData.education,
 
   updateGeneral: (field, value) =>
     set(state => ({
