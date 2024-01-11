@@ -2,13 +2,12 @@ import { AnimatedPage } from '../components/AnimatedPage';
 import { AnimatePresence } from 'framer-motion';
 import { v4 as uuidv4 } from 'uuid';
 
-import { useDataContext } from '../contexts/DataContext';
 import Card from '../components/Card';
 import { Field, DateField } from '../components/Field';
 import { useData } from '../store';
 
 function Education() {
-  const { data, setData } = useDataContext();
+  const addItem = useData(state => state.addItem);
   const newData = {
     id: 0,
     institution: '',
@@ -22,10 +21,7 @@ function Education() {
 
   function handleAddEducation() {
     const newEd = { ...newData, id: uuidv4() };
-    setData(prevData => ({
-      ...prevData,
-      education: [...prevData.education, newEd],
-    }));
+    addItem('education', newEd);
   }
 
   return (
