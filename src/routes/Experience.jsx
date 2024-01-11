@@ -4,9 +4,15 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { v4 as uuidv4 } from 'uuid';
 
 import { useDataContext } from '../contexts/DataContext';
+import { Field, DateField } from '../components/Field';
+import { useData } from '../store';
 
 function JobRender() {
   const { data, setData } = useDataContext();
+  const [experience, updateItem] = useData(state => [
+    state.experience,
+    state.updateItem,
+  ]);
   const months = [
     'January',
     'February',
@@ -79,7 +85,7 @@ function JobRender() {
     closed: { rotate: 180 },
   };
 
-  const jobs = data.experience.map(job => {
+  const jobs = experience.map(job => {
     return (
       <motion.div
         className="border bg-zinc-50 p-5"
@@ -137,104 +143,65 @@ function JobRender() {
             initial={false}
           >
             <div className="flex flex-col p-2">
-              <label htmlFor="">Company</label>
-              <input
-                type="text"
+              <Field
+                arraySet
+                name="Company"
+                section="experience"
+                index={job.id}
+                field="company"
+                set={updateItem}
                 value={job.company}
                 className="h-8 w-full border border-zinc-300 px-1"
-                onChange={e =>
-                  handleInputChange('company', e.target.value, job.id)
-                }
               />
             </div>
             <div className="flex flex-col p-2">
-              <label htmlFor="">Position</label>
-              <input
-                type="text"
+              <Field
+                arraySet
+                name="Position"
+                section="experience"
+                index={job.id}
+                field="position"
+                set={updateItem}
                 value={job.position}
                 className="h-8 w-full border border-zinc-300 px-1"
-                onChange={e =>
-                  handleInputChange('position', e.target.value, job.id)
-                }
               />
             </div>
             <div className="grid grid-cols-2">
               <div className="flex flex-col p-2">
-                <label htmlFor="">From</label>
-                <div className="grid grid-cols-3 gap-2">
-                  <select
-                    className="col-span-2 h-8 w-full border border-zinc-300 px-1"
-                    onChange={e =>
-                      handleInputChange('startDate', e.target.value, job.id)
-                    }
-                  >
-                    {months.map(month => {
-                      return (
-                        <option key={month} value={`${month}`}>
-                          {month}
-                        </option>
-                      );
-                    })}
-                  </select>
-                  <select
-                    className="h-8 w-full border border-zinc-300 px-1"
-                    onChange={e =>
-                      handleInputChange('startYear', e.target.value, job.id)
-                    }
-                  >
-                    {years.map(year => {
-                      return (
-                        <option key={year} value={`${year}`}>
-                          {year}
-                        </option>
-                      );
-                    })}
-                  </select>
-                </div>
+                <DateField
+                  name="From"
+                  set={updateItem}
+                  section="experience"
+                  index={job.id}
+                  field="startDate"
+                  fieldTwo="startYear"
+                  valueOne={job.startDate}
+                  valueTwo={job.startYear}
+                />
               </div>
               <div className="flex flex-col p-2">
-                <label htmlFor="">To</label>
-                <div className="grid grid-cols-3 gap-2">
-                  <select
-                    className="col-span-2 h-8 w-full border border-zinc-300 px-1"
-                    onChange={e =>
-                      handleInputChange('endDate', e.target.value, job.id)
-                    }
-                  >
-                    {months.map(month => {
-                      return (
-                        <option key={month} value={`${month}`}>
-                          {month}
-                        </option>
-                      );
-                    })}
-                  </select>
-                  <select
-                    className="h-8 w-full border border-zinc-300 px-1"
-                    onChange={e =>
-                      handleInputChange('endYear', e.target.value, job.id)
-                    }
-                  >
-                    {years.map(year => {
-                      return (
-                        <option key={year} value={`${year}`}>
-                          {year}
-                        </option>
-                      );
-                    })}
-                  </select>
-                </div>
+                <DateField
+                  name="To"
+                  set={updateItem}
+                  section="experience"
+                  index={job.id}
+                  field="endDate"
+                  fieldTwo="endYear"
+                  valueOne={job.endDate}
+                  valueTwo={job.endYear}
+                />
               </div>
             </div>
             <div className="flex flex-col p-2">
-              <label htmlFor="">Description</label>
-              <input
-                type="text"
+              <Field
+                arraySet
+                name="Description"
+                section="experience"
+                index={job.id}
+                field="description"
+                set={updateItem}
                 value={job.description}
                 className="h-8 w-full border border-zinc-300 px-1"
-                onChange={e =>
-                  handleInputChange('description', e.target.value, job.id)
-                }
               />
             </div>
           </motion.div>
@@ -247,10 +214,7 @@ function JobRender() {
 
 function Experience() {
   const { data, setData } = useDataContext();
-  const [cardState, setCardState] = useState([
-    { id: 0, status: true },
-    { id: 3, status: false },
-  ]);
+
   const newData = {
     id: 0,
     position: '',
