@@ -1,26 +1,11 @@
-import { useDataContext } from '../contexts/DataContext';
+import { useData } from '../store';
 
 export default function ImageUpload() {
-  const { data, setData } = useDataContext();
-  let imageUrl = '';
+  const updateGeneral = useData(state => state.updateGeneral);
 
   const handleImageUpload = img => {
-    imageUrl = URL.createObjectURL(img);
-    setData(prevData => ({
-      ...prevData,
-      generalInfo: prevData.generalInfo.map((item, i) =>
-        i == 0 ? { ...item, photo: imageUrl } : item,
-      ),
-    }));
-  };
-
-  const handleImageDelete = () => {
-    setData(prevData => ({
-      ...prevData,
-      generalInfo: prevData.generalInfo.map((item, i) =>
-        i == 0 ? { ...item, photo: '' } : item,
-      ),
-    }));
+    const imageUrl = URL.createObjectURL(img);
+    updateGeneral('photo', imageUrl);
   };
 
   return (
@@ -38,12 +23,6 @@ export default function ImageUpload() {
         onChange={e => handleImageUpload(e.target.files[0])}
         accept="image/png, image/jpg, image/jpeg"
       />
-      <button
-        className="ml-4 cursor-pointer self-center border-2 px-20 py-8 font-bold text-slate-500 duration-150 hover:bg-emphasis-500 hover:text-black"
-        onClick={handleImageDelete}
-      >
-        Delete Image
-      </button>
     </div>
   );
 }
