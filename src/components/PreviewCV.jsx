@@ -1,9 +1,10 @@
 import { useData } from '../store';
 
 function PreviewCV() {
-  const [generalInfo, experience] = useData(state => [
+  const [generalInfo, experience, education] = useData(state => [
     state.generalInfo,
     state.experience,
+    state.education,
   ]);
   return (
     <div className="h-full bg-white">
@@ -35,6 +36,20 @@ function PreviewCV() {
               <p className="font-light">{`${job.endDate} ${job.endYear}`}</p>
             </div>
             <p className="font-light">{job.description}</p>
+          </div>
+        );
+      })}
+      {education.map(ed => {
+        return (
+          <div key={ed.id}>
+            <h1 className="font-bold">{ed.institution}</h1>
+            <p className="font-light">{ed.title}</p>
+            <div className="flex gap-2">
+              <p className="font-light">{`${ed.start}`}</p>
+              {ed.start != '' ? <p className="font-bold">-</p> : null}
+              <p className="font-light">{`${ed.end}`}</p>
+            </div>
+            <p className="font-light">{ed.degree}</p>
           </div>
         );
       })}
