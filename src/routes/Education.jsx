@@ -1,9 +1,11 @@
-import { useState } from 'react';
 import { AnimatedPage } from '../components/AnimatedPage';
 import { motion, AnimatePresence } from 'framer-motion';
 import { v4 as uuidv4 } from 'uuid';
 
 import { useDataContext } from '../contexts/DataContext';
+import Card from '../components/Card';
+import { Field, DateField } from '../components/Field';
+import { useData } from '../store';
 
 function Education() {
   const { data, setData } = useDataContext();
@@ -49,6 +51,10 @@ function Education() {
 }
 
 function FieldsRender() {
+  const [education, updateItem] = useData(state => [
+    state.education,
+    state.updateItem,
+  ]);
   const { data, setData } = useDataContext();
 
   const years = Array.from(
@@ -108,7 +114,7 @@ function FieldsRender() {
     closed: { rotate: 180 },
   };
 
-  const education = data.education.map(ed => {
+  const edu = education.map(ed => {
     return (
       <motion.div
         className="border bg-zinc-50 p-5"
@@ -166,76 +172,61 @@ function FieldsRender() {
             initial={false}
           >
             <div className="flex flex-col p-2">
-              <label htmlFor="">Institution</label>
-              <input
-                type="text"
+              <Field
+                arraySet
+                name="Institution"
+                section="education"
+                index={ed.id}
+                field="institution"
+                set={updateItem}
                 value={ed.institution}
                 className="h-8 w-full border border-zinc-300 px-1"
-                onChange={e =>
-                  handleInputChange('institution', e.target.value, ed.id)
-                }
               />
             </div>
             <div className="flex flex-col p-2">
-              <label htmlFor="">Title</label>
-              <input
-                type="text"
+              <Field
+                arraySet
+                name="Title"
+                section="education"
+                index={ed.id}
+                field="title"
+                set={updateItem}
                 value={ed.title}
                 className="h-8 w-full border border-zinc-300 px-1"
-                onChange={e =>
-                  handleInputChange('title', e.target.value, ed.id)
-                }
               />
             </div>
             <div className="grid grid-cols-2">
               <div className="flex flex-col p-2">
-                <label htmlFor="">From</label>
-                <div className="gap-2">
-                  <select
-                    className="h-8 w-full border border-zinc-300 px-1"
-                    onChange={e =>
-                      handleInputChange('start', e.target.value, ed.id)
-                    }
-                  >
-                    {years.map(year => {
-                      return (
-                        <option key={year} value={`${year}`}>
-                          {year}
-                        </option>
-                      );
-                    })}
-                  </select>
-                </div>
+                <DateField
+                  name="From"
+                  set={updateItem}
+                  section="education"
+                  index={ed.id}
+                  fieldTwo="start"
+                  valueTwo={ed.start}
+                />
               </div>
               <div className="flex flex-col p-2">
-                <label htmlFor="">To</label>
-                <div className="gap-2">
-                  <select
-                    className="h-8 w-full border border-zinc-300 px-1"
-                    onChange={e =>
-                      handleInputChange('end', e.target.value, job.id)
-                    }
-                  >
-                    {years.map(year => {
-                      return (
-                        <option key={year} value={`${year}`}>
-                          {year}
-                        </option>
-                      );
-                    })}
-                  </select>
-                </div>
+                <DateField
+                  name="To"
+                  set={updateItem}
+                  section="education"
+                  index={ed.id}
+                  fieldTwo="end"
+                  valueTwo={ed.end}
+                />
               </div>
             </div>
             <div className="flex flex-col p-2">
-              <label htmlFor="">Degree</label>
-              <input
-                type="text"
+              <Field
+                arraySet
+                name="Degree"
+                section="education"
+                index={ed.id}
+                field="degree"
+                set={updateItem}
                 value={ed.degree}
                 className="h-8 w-full border border-zinc-300 px-1"
-                onChange={e =>
-                  handleInputChange('degree', e.target.value, ed.id)
-                }
               />
             </div>
           </motion.div>
@@ -243,7 +234,7 @@ function FieldsRender() {
       </motion.div>
     );
   });
-  return <AnimatePresence>{education}</AnimatePresence>;
+  return <AnimatePresence>{edu}</AnimatePresence>;
 }
 
 export default Education;
