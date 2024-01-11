@@ -1,24 +1,26 @@
 import { useDataContext } from '../contexts/DataContext';
+import { useData } from '../store';
 
 function PreviewCV() {
   const { data } = useDataContext();
+  const [generalInfo] = useData(state => [state.generalInfo]);
   return (
     <div className="h-full bg-white">
       <div className="h-30 bg-emphasis-500 p-5">
         <img
           className="h-[150px] w-[150px] object-cover"
-          src={data.generalInfo[0].photo}
+          src={generalInfo.photo}
           alt=""
         />
-        <h1 className="text-2xl font-bold">{data.generalInfo[0].fullname}</h1>
-        <p className="font-light">{data.generalInfo[0].title}</p>
+        <h1 className="text-2xl font-bold">{generalInfo.fullname}</h1>
+        <p className="font-light">{generalInfo.title}</p>
       </div>
-      <p className="font-light">{data.generalInfo[0].age}</p>
-      <p className="font-light">{data.generalInfo[0].email}</p>
-      <p className="font-light">{data.generalInfo[0].phone}</p>
-      <p className="font-light">{data.generalInfo[0].country}</p>
-      <p className="font-light">{data.generalInfo[0].city}</p>
-      <p className="font-light">{data.generalInfo[0].about}</p>
+      <p className="font-light">{generalInfo.age}</p>
+      <p className="font-light">{generalInfo.email}</p>
+      <p className="font-light">{generalInfo.phone}</p>
+      <p className="font-light">{generalInfo.country}</p>
+      <p className="font-light">{generalInfo.city}</p>
+      <p className="font-light">{generalInfo.about}</p>
       {data.experience.map(job => {
         return (
           <div key={job.id}>
