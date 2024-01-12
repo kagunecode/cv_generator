@@ -5,6 +5,7 @@ const useData = create(set => ({
   generalInfo: cvData.generalInfo,
   experience: cvData.experience,
   education: cvData.education,
+  skills: cvData.skills,
 
   updateGeneral: (field, value) =>
     set(state => ({
