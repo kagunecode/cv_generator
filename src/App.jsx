@@ -10,6 +10,7 @@ import Experience from './routes/Experience';
 import Welcome from './routes/Welcome';
 import Sidebar from './components/Sidebar';
 import Education from './routes/Education';
+import Skills from './routes/Skills';
 
 // Contexts
 import { useSidebarContext } from './contexts/SidebarContext';
@@ -55,6 +56,14 @@ function App() {
             element={
               <Layout>
                 <Education />
+              </Layout>
+            }
+          />
+          <Route
+            path="/skills"
+            element={
+              <Layout>
+                <Skills />
               </Layout>
             }
           />
