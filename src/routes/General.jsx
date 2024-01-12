@@ -19,7 +19,7 @@ function General() {
       animate="animate"
       //exit="exit"
       transition={{ duration: 0.3 }}
-      className="flex h-full flex-col"
+      className="flex h-[97vh] flex-col"
     >
       <h1 className="text-5xl font-semibold">General</h1>
       <p>All your basic information goes here</p>
