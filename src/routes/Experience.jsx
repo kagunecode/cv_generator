@@ -6,6 +6,45 @@ import { Field, DateField } from '../components/Field';
 import Card from '../components/Card';
 import { useData } from '../store';
 
+function Experience() {
+  const addItem = useData(state => state.addItem);
+
+  const newData = {
+    id: 0,
+    position: '',
+    company: '',
+    startDate: '',
+    startYear: '',
+    endDate: '',
+    endYear: '',
+    description: '',
+    status: true,
+  };
+
+  function handleAddJob() {
+    const newJob = { ...newData, id: uuidv4() };
+    addItem('experience', newJob);
+  }
+
+  return (
+    <AnimatedPage>
+      <h1 className="text-5xl font-semibold">Experience</h1>
+      <p>Add previous jobs related to the job you're applying to</p>
+      <div className="mr-2 grid gap-y-4 p-4">
+        <JobRender></JobRender>
+      </div>
+      <div className="flex justify-center px-6">
+        <button
+          onClick={handleAddJob}
+          className="border px-10 py-2 font-semibold text-slate-700 duration-200 hover:bg-emphasis-500 hover:text-black"
+        >
+          Add Job
+        </button>
+      </div>
+    </AnimatedPage>
+  );
+}
+
 function JobRender() {
   const [experience, updateItem] = useData(state => [
     state.experience,
@@ -88,45 +127,6 @@ function JobRender() {
     );
   });
   return <AnimatePresence>{jobs}</AnimatePresence>;
-}
-
-function Experience() {
-  const addItem = useData(state => state.addItem);
-
-  const newData = {
-    id: 0,
-    position: '',
-    company: '',
-    startDate: '',
-    startYear: '',
-    endDate: '',
-    endYear: '',
-    description: '',
-    status: true,
-  };
-
-  function handleAddJob() {
-    const newJob = { ...newData, id: uuidv4() };
-    addItem('experience', newJob);
-  }
-
-  return (
-    <AnimatedPage>
-      <h1 className="text-5xl font-semibold">Experience</h1>
-      <p>Add previous jobs related to the job you're applying to</p>
-      <div className="mr-2 grid gap-y-4 p-4">
-        <JobRender></JobRender>
-      </div>
-      <div className="flex justify-center px-6">
-        <button
-          onClick={handleAddJob}
-          className="border px-10 py-2 font-semibold text-slate-700 duration-200 hover:bg-emphasis-500 hover:text-black"
-        >
-          Add Job
-        </button>
-      </div>
-    </AnimatedPage>
-  );
 }
 
 export default Experience;
