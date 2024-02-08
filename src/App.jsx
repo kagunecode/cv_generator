@@ -33,7 +33,7 @@ function App() {
         animate={status ? 'open' : 'false'}
         transition={{ duration: 0.6, ease: 'easeInOut' }}
       >
-        <Navbar />
+        {location.pathname != '/' && <Navbar />}
         <Routes location={location} key={location.pathname}>
           <Route
             path="/general"
@@ -67,14 +67,7 @@ function App() {
               </Layout>
             }
           />
-          <Route
-            index
-            element={
-              <Layout>
-                <Welcome />
-              </Layout>
-            }
-          />
+          <Route index element={<Welcome />} />
           <Route path="*" element={<Navigate to="/error" replace />} />
         </Routes>
       </motion.div>
