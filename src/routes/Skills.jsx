@@ -79,7 +79,7 @@ function SkillRender() {
             return (
               <SkillCard key={skill.id}>
                 <h1 className="text-3xl font-bold">{skill.name}</h1>
-                <h1>{skill.expertise}</h1>
+                <div className="mt-4 grid h-12 grid-cols-4 border bg-zinc-100"></div>
               </SkillCard>
             );
           })}
@@ -91,7 +91,7 @@ function SkillRender() {
 
 function SkillCard({ children }) {
   return (
-    <div className="flex h-48 w-full flex-col border bg-zinc-50 p-7">
+    <div className="flex h-[9rem] w-full flex-col border bg-zinc-50 p-7">
       {children}
     </div>
   );
