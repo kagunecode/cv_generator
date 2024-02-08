@@ -6,7 +6,7 @@ export default function Layout({ children }) {
       <div className="col-span-2 overflow-y-auto overflow-x-hidden">
         <div>{children}</div>
       </div>
-      <div className="col-span-1 bg-zinc-200 p-2">
+      <div className="col-span-1 hidden bg-zinc-200 p-2 lg:block">
         <PreviewCV></PreviewCV>
       </div>
     </div>
