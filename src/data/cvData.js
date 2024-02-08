@@ -40,7 +40,7 @@ const cvData = {
     {
       id: 0,
       name: 'React',
-      proficiency: 4,
+      expertise: 'Beginner',
     },
   ],
 };
