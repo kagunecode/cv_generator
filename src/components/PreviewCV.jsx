@@ -152,15 +152,16 @@ function PreviewCV() {
 
   return (
     <div className="flex h-full w-full flex-col">
-      <div className="mb-2 flex items-center justify-between gap-10">
+      <div className="flex items-center justify-between gap-10 border bg-gray-50">
         <button
-          className="border bg-gray-50 px-10 py-2 font-bold duration-200 hover:bg-emphasis-500"
+          className="px-10 py-2 font-bold duration-200 hover:bg-emphasis-500"
           onClick={handleRender}
         >
           Compile
         </button>
-        <div className="border bg-gray-50 px-10 py-2 font-bold duration-200 hover:bg-emphasis-500">
+        <div className="px-10 py-2 font-bold duration-200 hover:bg-emphasis-500">
           <PDFDownloadLink
+            fileName={`${generalInfo.fullname}_CV`}
             document={
               <PDFDocument
                 generalInfo={generalInfo}
