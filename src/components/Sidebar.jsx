@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useSidebarContext } from '../contexts/SidebarContext';
 import Curve from './Curve';
+import sectionInfo from '../data/sectionInfo';
 
 export const menuSlide = {
   initial: { x: 'calc(-100% - 100px)' },
@@ -25,56 +26,6 @@ const linkSlide = {
     x: '-80px',
     transition: { duration: 0.5, ease: [0.45, 0, 0.55, 1], delay: 0.03 * i },
   }),
-};
-
-const sidebarItems = [
-  {
-    title: 'GENERAL',
-    href: '/general',
-  },
-  {
-    title: 'EXPERIENCE',
-    href: '/experience',
-  },
-  {
-    title: 'EDUCATION',
-    href: '/education',
-  },
-  {
-    title: 'SKILLS',
-    href: '/skills',
-  },
-  {
-    title: 'OTHER',
-    href: '/other',
-  },
-  {
-    title: 'CUSTOMIZE',
-    href: '/customize',
-  },
-];
-
-const initialPath = `M0 0 L0 ${window.innerHeight} Q150 ${
-  window.innerHeight / 2
-} 0 0`;
-
-const targetPath = `M0 0 L0 ${window.innerHeight} Q150 ${
-  window.innerHeight / 2
-} 0 0`;
-
-const pathAnimation = {
-  initial: {
-    d: initialPath,
-    transition: { duration: 0.5, ease: [0.45, 0, 0.55, 1] },
-  },
-  enter: {
-    d: targetPath,
-    transition: { duration: 0.5, ease: [0.45, 0, 0.55, 1] },
-  },
-  exit: {
-    d: initialPath,
-    transition: { duration: 0.5, ease: [0.45, 0, 0.55, 1] },
-  },
 };
 
 export default function Sidebar() {
@@ -102,7 +53,7 @@ export default function Sidebar() {
         <div className="ml-[10%] flex h-full flex-col justify-center">
           <p>Tools</p>
           <hr className="mb-2 border-black" />
-          {sidebarItems.map((link, i) => {
+          {sectionInfo.map((link, i) => {
             return (
               <motion.div
                 custom={i}
@@ -115,9 +66,9 @@ export default function Sidebar() {
                 <Link
                   className="px-[10%] text-4xl font-bold duration-200 hover:bg-black hover:text-emphasis-500"
                   onClick={handleSidebarToggle}
-                  to={link.href}
+                  to={link.tabUrl}
                 >
-                  {link.title}
+                  {link.tabName.toUpperCase()}
                 </Link>
               </motion.div>
             );
