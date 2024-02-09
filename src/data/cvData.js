@@ -1,3 +1,5 @@
+import defaultPhoto from '/images/default.jpg';
+
 const cvData = {
   generalInfo: {
     fullname: 'John Doe',
@@ -8,7 +10,7 @@ const cvData = {
     country: 'United States',
     city: 'New York',
     about: 'Say something about you!',
-    photo: null,
+    photo: defaultPhoto,
   },
 
   experience: [
