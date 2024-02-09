@@ -11,7 +11,7 @@ function Items(props) {
         className="group relative overflow-hidden px-3 font-semibold text-slate-400 duration-200 hover:cursor-default hover:text-slate-800"
         key={tab.tabName}
       >
-        <Link to={`${tab.tabUrl}`}>{tab.tabName}</Link>
+        <Link to={tab.tabUrl}>{tab.tabName}</Link>
         <div className="absolute left-0 z-[-10] h-full w-full bg-emphasis-500 duration-150 group-hover:translate-y-[-1.5rem]"></div>
       </li>
     );
