@@ -1,30 +1,16 @@
-import { motion } from 'framer-motion';
-
 import ImageUpload from '../components/ImageUpload';
 import { Field, CountryField } from '../components/Field';
+import { AnimatedPage } from '../components/AnimatedPage';
 
 import { useData } from '../store';
 
 function General() {
-  // TODO: Move variants to a separate file
-  const animations = {
-    initial: { opacity: 0, x: 10 },
-    animate: { opacity: 1, x: 0 },
-    //exit: { opacity: 0, y: -10 },
-  };
   return (
-    <motion.div
-      variants={animations}
-      initial="initial"
-      animate="animate"
-      //exit="exit"
-      transition={{ duration: 0.3 }}
-      className="flex h-[97vh] flex-col"
-    >
+    <AnimatedPage>
       <h1 className="text-5xl font-semibold">General</h1>
       <p>All your basic information goes here</p>
       <GeneralForm />
-    </motion.div>
+    </AnimatedPage>
   );
 }
 
