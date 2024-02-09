@@ -9,20 +9,18 @@ import { useData } from '../store';
 function Experience() {
   const addItem = useData(state => state.addItem);
 
-  const newData = {
-    id: 0,
-    position: '',
-    company: '',
-    startDate: '',
-    startYear: '',
-    endDate: '',
-    endYear: '',
-    description: '',
-    status: true,
-  };
-
   function handleAddJob() {
-    const newJob = { ...newData, id: uuidv4() };
+    const newJob = {
+      id: uuidv4(),
+      position: '',
+      company: '',
+      startDate: 'January',
+      startYear: '2021',
+      endDate: 'January',
+      endYear: '2024',
+      description: '',
+      status: true,
+    };
     addItem('experience', newJob);
   }
 
@@ -31,7 +29,7 @@ function Experience() {
       <h1 className="text-5xl font-semibold">Experience</h1>
       <p>Add previous jobs related to the job you're applying to</p>
       <div className="mr-2 grid gap-y-4 p-4">
-        <JobRender></JobRender>
+        <JobRender />
       </div>
       <div className="flex justify-center px-6">
         <button
@@ -54,7 +52,7 @@ function JobRender() {
   const jobs = experience.map(job => {
     return (
       <Card
-        title={`Job at ${job.company}`}
+        title={`${job.position} at ${job.company}`}
         item={job}
         section="experience"
         key={job.id}
