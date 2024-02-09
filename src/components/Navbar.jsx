@@ -4,8 +4,8 @@ import { AnimatedPage } from './AnimatedPage';
 
 import { useSidebarContext } from '../contexts/SidebarContext';
 
-function Items(props) {
-  const itemList = props.navbarTabs.map(tab => {
+function Items() {
+  const itemList = sectionInfo.map(tab => {
     return (
       <li
         className="group relative overflow-hidden px-3 font-semibold text-slate-400 duration-200 hover:cursor-default hover:text-slate-800"
@@ -34,7 +34,7 @@ function Navbar() {
           transformOrigin: 'left top',
         }}
       >
-        <Items navbarTabs={sectionInfo.reverse()}></Items>
+        <Items />
         <Link
           className="ml-2 rotate-90 px-5 text-3xl font-bold duration-200 hover:rotate-180 hover:cursor-pointer"
           onClick={handleSidebarToggle}
