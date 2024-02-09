@@ -25,7 +25,7 @@ function SkillRender() {
     state.addItem,
   ]);
 
-  const [skillName, setSkillName] = useState();
+  const [skillName, setSkillName] = useState('');
 
   const skillLevels = ['Beginner', 'Intermediate', 'Advanced', 'Expert'];
 
@@ -37,8 +37,24 @@ function SkillRender() {
   }
 
   function handleAddSkill() {
+    console.log(skillName);
+    if (skillName == '') return;
     const newItem = { id: uuidv4(), name: skillName, expertise: active };
     addItem('skills', newItem);
+    setSkillName('');
+  }
+
+  function getProficiency(proficiency) {
+    switch (proficiency) {
+      case 'Beginner':
+        return 'w-[25%]';
+      case 'Intermediate':
+        return 'w-[50%]';
+      case 'Advanced':
+        return 'w-[75%]';
+      case 'Expert':
+        return 'w-[100%]';
+    }
   }
 
   return (
@@ -48,6 +64,7 @@ function SkillRender() {
           <input
             onChange={e => setSkillName(e.target.value)}
             className="col-span-2 h-full w-full border border-zinc-300 px-1 text-xl"
+            value={skillName}
           />
           <div className="text-md col-span-2 ml-2 grid grid-cols-4 grid-rows-1">
             {skillLevels.map((skillLevel, i) => {
@@ -78,8 +95,14 @@ function SkillRender() {
           {skills.map(skill => {
             return (
               <SkillCard key={skill.id}>
-                <h1 className="text-3xl font-bold">{skill.name}</h1>
-                <div className="mt-4 grid h-12 grid-cols-4 border bg-zinc-100"></div>
+                <h1 className="truncate text-xl font-bold">{skill.name}</h1>
+                <div className="mt-4 h-6 w-full border bg-zinc-100">
+                  <div
+                    className={`h-full bg-emphasis-500 ${getProficiency(
+                      skill.expertise,
+                    )}`}
+                  />
+                </div>
               </SkillCard>
             );
           })}
@@ -91,7 +114,7 @@ function SkillRender() {
 
 function SkillCard({ children }) {
   return (
-    <div className="flex h-[9rem] w-full flex-col border bg-zinc-50 p-7">
+    <div className="flex h-[8rem] w-full flex-col border bg-zinc-50 p-7">
       {children}
     </div>
   );
