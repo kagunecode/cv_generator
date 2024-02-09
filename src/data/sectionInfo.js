@@ -2,28 +2,28 @@ const sectionInfo = [
   {
     id: 1,
     tabName: 'General',
-    tabUrl: 'general',
+    tabUrl: '/general',
     isActive: false,
   },
   {
     id: 2,
     tabName: 'Experience',
-    tabUrl: 'experience',
+    tabUrl: '/experience',
     isActive: false,
   },
   {
     id: 3,
     tabName: 'Education',
-    tabUrl: 'education',
+    tabUrl: '/education',
     isActive: false,
   },
   {
     id: 4,
     tabName: 'Skills',
-    tabUrl: 'skills',
+    tabUrl: '/skills',
     isActive: false,
   },
-  {
+  /*   {
     id: 5,
     tabName: 'Other',
     tabUrl: 'other',
@@ -34,7 +34,7 @@ const sectionInfo = [
     tabName: 'Customize',
     tabUrl: 'customize',
     isActive: false,
-  },
+  }, */
 ];
 
 export default sectionInfo;
