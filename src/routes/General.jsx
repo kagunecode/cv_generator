@@ -21,13 +21,13 @@ function GeneralForm() {
   ]);
 
   return (
-    <div className="row-auto mr-5 mt-5 grid flex-1 grid-cols-1 border bg-zinc-50 p-5">
+    <div className="row-auto mr-5 mt-5 grid flex-1 grid-cols-1 border bg-zinc-50 p-5 text-sm text-sm lg:text-lg lg:text-lg">
       <div className="flex flex-col">
         <Field
           name="Full Name"
           field="fullname"
           set={updateGeneral}
-          className="mr-4 h-8 border border-zinc-300 px-1"
+          className="mr-4 h-8 border border-zinc-300 px-1 text-sm text-sm lg:text-lg lg:text-lg"
           value={generalInfo.fullname}
         />
       </div>
@@ -36,7 +36,7 @@ function GeneralForm() {
           name="Age"
           field="age"
           set={updateGeneral}
-          className="mr-4 h-8 border border-zinc-300 px-1"
+          className="mr-4 h-8 border border-zinc-300 px-1 text-sm lg:text-lg"
           value={generalInfo.age}
           desc="(no specific formatting)"
         ></Field>
@@ -46,7 +46,7 @@ function GeneralForm() {
           name="Title"
           field="title"
           set={updateGeneral}
-          className="mr-4 h-8 border border-zinc-300 px-1"
+          className="mr-4 h-8 border border-zinc-300 px-1 text-sm lg:text-lg"
           value={generalInfo.title}
         />
       </div>
@@ -55,7 +55,7 @@ function GeneralForm() {
           name="Email"
           field="email"
           set={updateGeneral}
-          className="mr-4 h-8 border border-zinc-300 px-1"
+          className="mr-4 h-8 border border-zinc-300 px-1 text-sm lg:text-lg"
           value={generalInfo.email}
         />
       </div>
@@ -64,7 +64,7 @@ function GeneralForm() {
           name="Phone"
           field="phone"
           set={updateGeneral}
-          className="mr-4 h-8 border border-zinc-300 px-1"
+          className="mr-4 h-8 border border-zinc-300 px-1 text-sm lg:text-lg"
           value={generalInfo.phone}
         />
       </div>
@@ -73,7 +73,7 @@ function GeneralForm() {
           name="Country"
           field="country"
           set={updateGeneral}
-          className="mr-4 h-8 border border-zinc-300 px-1"
+          className="mr-4 h-8 border border-zinc-300 px-1 text-sm lg:text-lg"
           value={generalInfo.country}
         />
       </div>
@@ -82,17 +82,17 @@ function GeneralForm() {
           name="City"
           field="city"
           set={updateGeneral}
-          className="mr-4 h-8 border border-zinc-300 px-1"
+          className="mr-4 h-8 border border-zinc-300 px-1 text-sm lg:text-lg"
           value={generalInfo.city}
         />
       </div>
-      <div className="grid grid-cols-2">
+      <div className="md:grid md:grid-cols-2">
         <div className="flex flex-col">
           <Field
             name="About You"
             field="about"
             set={updateGeneral}
-            className="mr-4 h-40 border border-zinc-300 p-1"
+            className="mr-4 h-40 border border-zinc-300 p-1 text-sm lg:text-lg"
             value={generalInfo.about}
             textArea
           />
