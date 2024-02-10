@@ -81,7 +81,7 @@ function JobRender() {
             className="h-8 w-full border border-zinc-300 px-1"
           />
         </div>
-        <div className="grid grid-cols-2">
+        <div className="col-span-2 grid grid-cols-2 xl:col-span-1">
           <div className="flex flex-col p-2">
             <DateField
               name="From"
@@ -109,7 +109,7 @@ function JobRender() {
             />
           </div>
         </div>
-        <div className="flex flex-col p-2">
+        <div className="col-span-2 flex flex-col p-2 xl:col-span-1">
           <Field
             arraySet
             name="Description"
