@@ -119,10 +119,10 @@ function DateField({
   return (
     <>
       <label htmlFor="">{name}</label>
-      <div className="grid grid-cols-3 gap-2">
+      <div className="grid grid-cols-1 gap-2 text-sm lg:text-lg xl:grid-cols-3">
         {useMonth && (
           <select
-            className="col-span-2 h-8 w-full border border-zinc-300 px-1"
+            className=" h-8 w-full border border-zinc-300 px-1 xl:col-span-2"
             onChange={e => set(section, index, field, e.target.value)}
             value={valueOne}
           >
@@ -136,8 +136,8 @@ function DateField({
           </select>
         )}
         <select
-          className={`h-8 w-full border border-zinc-300 px-1 ${
-            !useMonth && 'col-span-3'
+          className={` h-8 w-full border border-zinc-300 px-1 xl:col-span-1 ${
+            !useMonth && 'md:col-span-3'
           }`}
           onChange={e => set(section, index, fieldTwo, e.target.value)}
           value={valueTwo}
