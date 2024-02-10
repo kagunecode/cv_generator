@@ -11,7 +11,7 @@ export default function ImageUpload() {
   return (
     <div className="flex h-[50%] justify-center self-center align-middle">
       <label
-        className="cursor-pointer self-center border-2 px-20 py-8 font-bold text-slate-500 duration-150 hover:bg-emphasis-500 hover:text-black"
+        className="mb-2 cursor-pointer self-center border px-20 py-8 font-bold text-slate-500 duration-150 hover:bg-emphasis-500 hover:text-black"
         htmlFor="image_upload"
       >
         Upload Image
