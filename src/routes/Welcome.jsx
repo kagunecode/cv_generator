@@ -6,7 +6,7 @@ function Welcome() {
     <>
       <AnimatedPage>
         <div className="absolute left-0 top-0 flex h-full w-full flex-col items-center justify-center">
-          <h1 className="text-[7rem] font-semibold tracking-tighter">
+          <h1 className="text-[2rem] font-semibold tracking-tighter sm:text-[3rem] xl:text-[7rem]">
             Kagune CV Generator
           </h1>
           <p>

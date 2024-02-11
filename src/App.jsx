@@ -28,7 +28,7 @@ function App() {
     <div className="relative h-full">
       <AnimatePresence mode="wait">{status && <Sidebar />}</AnimatePresence>
       {location.pathname != '/' && <Navbar />}
-      <div className="lg:hidden">
+      <div className="absolute h-full w-full lg:hidden">
         <MobileViewer />
       </div>
       <motion.div
