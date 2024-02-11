@@ -21,13 +21,13 @@ function GeneralForm() {
   ]);
 
   return (
-    <div className="row-auto mr-5 mt-5 grid flex-1 grid-cols-1 border bg-zinc-50 p-5 text-sm text-sm lg:text-lg lg:text-lg">
+    <div className="row-auto mr-5 mt-5 grid flex-1 grid-cols-1 border bg-zinc-50 p-5 text-sm lg:text-lg">
       <div className="flex flex-col">
         <Field
           name="Full Name"
           field="fullname"
           set={updateGeneral}
-          className="mr-4 h-8 border border-zinc-300 px-1 text-sm text-sm lg:text-lg lg:text-lg"
+          className="mr-4 h-8 border border-zinc-300 px-1 text-sm lg:text-lg"
           value={generalInfo.fullname}
         />
       </div>
