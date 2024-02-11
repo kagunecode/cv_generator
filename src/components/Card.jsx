@@ -19,9 +19,9 @@ export default function Card({ title, item, section, children }) {
       exit="exit"
       transition={{ duration: 0.1 }}
     >
-      <div className="flex items-center justify-between">
-        <h1 className="p-2 font-bold md:text-xl">{title}</h1>
-        <div className="flex gap-3 p-2">
+      <div className="flex items-center justify-between p-2">
+        <h1 className="font-bold md:text-xl">{title}</h1>
+        <div className="flex gap-3">
           <TrashCanIcon onClick={() => deleteItem(section, item.id)} />
           <ArrowIcon
             status={item.status}
