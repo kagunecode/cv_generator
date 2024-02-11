@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useData } from '../store';
 import axios from 'axios';
 
 function Field({
@@ -6,12 +7,12 @@ function Field({
   section,
   index,
   field,
-  set,
   desc,
   textArea = false,
   arraySet = false,
   ...props
 }) {
+  const set = useData(state => state.updateItem);
   return (
     <>
       <label htmlFor={field}>
@@ -28,7 +29,7 @@ function Field({
       {textArea && (
         <textarea
           id={field}
-          onChange={e => set(field, e.target.value)}
+          onChange={e => set(section, index, field, e.target.value)}
           {...props}
         />
       )}
@@ -42,8 +43,9 @@ function Field({
   );
 }
 
-function CountryField({ name, field, set, ...props }) {
+function CountryField({ name, field, section, index, ...props }) {
   const [countries, setCountries] = useState([]);
+  const set = useData(state => state.updateItem);
 
   // TODO: Move the fetches into their own utility module for better management
   useEffect(() => {
@@ -68,8 +70,7 @@ function CountryField({ name, field, set, ...props }) {
       <label htmlFor={field}>{name}</label>
       <select
         id={field}
-        className="mr-4 h-8 border border-zinc-300 px-1"
-        onChange={e => set(field, e.target.value)}
+        onChange={e => set(section, index, field, e.target.value)}
         {...props}
       >
         {countries.map(country => {
