@@ -11,6 +11,7 @@ import Sidebar from './components/Sidebar';
 import Education from './routes/Education';
 import Skills from './routes/Skills';
 import PreviewCV from './components/PreviewCV';
+import MobileViewer from './components/MobileViewer';
 
 // Contexts
 import { useSidebarContext } from './contexts/SidebarContext';
@@ -27,6 +28,9 @@ function App() {
     <div className="relative h-full">
       <AnimatePresence mode="wait">{status && <Sidebar />}</AnimatePresence>
       {location.pathname != '/' && <Navbar />}
+      <div className="lg:hidden">
+        <MobileViewer />
+      </div>
       <motion.div
         className="h-full"
         initial={false}
