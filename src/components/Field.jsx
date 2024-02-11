@@ -37,7 +37,7 @@ function CountryField({ name, field, section, index, ...props }) {
 
   useEffect(() => {
     countryFetch(setCountries);
-  }, []);
+  }, [setCountries]);
 
   return (
     <>
