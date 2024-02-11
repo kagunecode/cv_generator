@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import sectionInfo from '../data/sectionInfo';
-import { AnimatedPage } from './AnimatedPage';
 
 import { useSidebarContext } from '../contexts/SidebarContext';
 
@@ -26,23 +25,23 @@ function Navbar() {
     setStatus(!status);
   };
   return (
-    <AnimatedPage>
-      <div
-        className="fixed flex h-12 w-[100vh] items-center justify-end border px-2 py-2"
-        style={{
-          transform: 'rotate(-90deg) translate(-100%, 0)',
-          transformOrigin: 'left top',
-        }}
+    <div
+      className={`fixed ${
+        status ? 'z-0' : 'z-10'
+      } flex h-12 w-[100dvh] items-center justify-end border px-2 py-2`}
+      style={{
+        transform: 'rotate(-90deg) translate(-100%, 0)',
+        transformOrigin: 'left top',
+      }}
+    >
+      <Items />
+      <Link
+        className="ml-2 rotate-90 px-5 text-3xl font-bold duration-200 hover:rotate-180 hover:cursor-pointer"
+        onClick={handleSidebarToggle}
       >
-        <Items />
-        <Link
-          className="ml-2 rotate-90 px-5 text-3xl font-bold duration-200 hover:rotate-180 hover:cursor-pointer"
-          onClick={handleSidebarToggle}
-        >
-          L
-        </Link>
-      </div>
-    </AnimatedPage>
+        L
+      </Link>
+    </div>
   );
 }
 
