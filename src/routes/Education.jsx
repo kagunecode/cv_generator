@@ -31,8 +31,8 @@ function Education() {
         Degrees, certificates and proven educational experiences, add as many as
         you can!
       </p>
-      <div className="mr-2 grid gap-y-4 p-4">
-        <FieldsRender></FieldsRender>
+      <div className="mr-2 grid gap-y-4 p-4 text-sm lg:text-lg">
+        <FieldsRender />
       </div>
       <div className="flex justify-center px-6">
         <button
@@ -60,7 +60,7 @@ function FieldsRender() {
         section="education"
         key={ed.id}
       >
-        <div className="flex flex-col p-2">
+        <div className="flex flex-col p-2 text-sm lg:text-lg">
           <Field
             arraySet
             name="Institution"
@@ -72,7 +72,7 @@ function FieldsRender() {
             className="h-8 w-full border border-zinc-300 px-1"
           />
         </div>
-        <div className="flex flex-col p-2">
+        <div className="flex flex-col p-2 text-sm lg:text-lg">
           <Field
             arraySet
             name="Title"
@@ -84,8 +84,8 @@ function FieldsRender() {
             className="h-8 w-full border border-zinc-300 px-1"
           />
         </div>
-        <div className="grid grid-cols-2">
-          <div className="flex flex-col p-2">
+        <div className="col-span-2 grid grid-cols-2 text-sm md:col-span-1 lg:text-lg">
+          <div className="col flex flex-col p-2 text-sm lg:text-lg">
             <DateField
               name="From"
               set={updateItem}
@@ -95,7 +95,7 @@ function FieldsRender() {
               valueTwo={ed.start}
             />
           </div>
-          <div className="flex flex-col p-2">
+          <div className="flex flex-col p-2 text-sm lg:text-lg">
             <DateField
               name="To"
               set={updateItem}
@@ -106,7 +106,7 @@ function FieldsRender() {
             />
           </div>
         </div>
-        <div className="flex flex-col p-2">
+        <div className="col-span-2 flex flex-col p-2 text-sm md:col-span-1 lg:text-lg">
           <Field
             arraySet
             name="Degree"

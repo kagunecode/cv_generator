@@ -136,8 +136,8 @@ function DateField({
           </select>
         )}
         <select
-          className={` h-8 w-full border border-zinc-300 px-1 xl:col-span-1 ${
-            !useMonth && 'md:col-span-3'
+          className={`h-8 w-full border border-zinc-300 px-1 xl:col-span-1 ${
+            !useMonth && 'xl:col-span-3'
           }`}
           onChange={e => set(section, index, fieldTwo, e.target.value)}
           value={valueTwo}
