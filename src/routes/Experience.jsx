@@ -28,13 +28,13 @@ function Experience() {
     <AnimatedPage>
       <h1 className="text-5xl font-semibold">Experience</h1>
       <p>Add previous jobs related to the job you're applying to</p>
-      <div className="mr-2 grid gap-y-4 p-4">
+      <div className="mr-2 grid gap-y-4 p-4 text-sm lg:text-lg">
         <JobRender />
       </div>
       <div className="flex justify-center px-6">
         <button
           onClick={handleAddJob}
-          className="border px-10 py-2 font-semibold text-slate-700 duration-200 hover:bg-emphasis-500 hover:text-black"
+          className="border px-10 py-2 text-sm font-semibold text-slate-700 duration-200 hover:bg-emphasis-500 hover:text-black lg:text-lg"
         >
           Add Job
         </button>
@@ -57,7 +57,7 @@ function JobRender() {
         section="experience"
         key={job.id}
       >
-        <div className="flex flex-col p-2">
+        <div className="flex flex-col p-2 text-sm lg:text-lg">
           <Field
             arraySet
             name="Company"
@@ -69,7 +69,7 @@ function JobRender() {
             className="h-8 w-full border border-zinc-300 px-1"
           />
         </div>
-        <div className="flex flex-col p-2">
+        <div className="flex flex-col p-2 text-sm lg:text-lg">
           <Field
             arraySet
             name="Position"
@@ -81,8 +81,8 @@ function JobRender() {
             className="h-8 w-full border border-zinc-300 px-1"
           />
         </div>
-        <div className="col-span-2 grid grid-cols-2 xl:col-span-1">
-          <div className="flex flex-col p-2">
+        <div className="col-span-2 grid grid-cols-2 text-sm lg:text-lg xl:col-span-1">
+          <div className="flex flex-col p-2 text-sm lg:text-lg">
             <DateField
               name="From"
               set={updateItem}
@@ -95,7 +95,7 @@ function JobRender() {
               useMonth
             />
           </div>
-          <div className="flex flex-col p-2">
+          <div className="flex flex-col p-2 text-sm lg:text-lg">
             <DateField
               name="To"
               set={updateItem}
@@ -109,7 +109,7 @@ function JobRender() {
             />
           </div>
         </div>
-        <div className="col-span-2 flex flex-col p-2 xl:col-span-1">
+        <div className="col-span-2 flex flex-col p-2 text-sm lg:text-lg xl:col-span-1">
           <Field
             arraySet
             name="Description"
