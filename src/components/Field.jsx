@@ -9,36 +9,21 @@ function Field({
   field,
   desc,
   textArea = false,
-  arraySet = false,
+  arraySet = true,
   ...props
 }) {
   const set = useData(state => state.updateItem);
+  const handleChange = e => {
+    set(section, index, field, e.target.value);
+  };
   return (
     <>
       <label htmlFor={field}>
         {name}
         {desc && <span className="text-xs text-slate-600"> {desc}</span>}
       </label>
-      {!textArea && !arraySet && (
-        <input
-          id={field}
-          onChange={e => set(field, e.target.value)}
-          {...props}
-        />
-      )}
-      {textArea && (
-        <textarea
-          id={field}
-          onChange={e => set(section, index, field, e.target.value)}
-          {...props}
-        />
-      )}
-      {arraySet && (
-        <input
-          onChange={e => set(section, index, field, e.target.value)}
-          {...props}
-        />
-      )}
+      {textArea && <textarea id={field} onChange={handleChange} {...props} />}
+      {arraySet && !textArea && <input onChange={handleChange} {...props} />}
     </>
   );
 }
@@ -46,6 +31,9 @@ function Field({
 function CountryField({ name, field, section, index, ...props }) {
   const [countries, setCountries] = useState([]);
   const set = useData(state => state.updateItem);
+  const handleChange = e => {
+    set(section, index, field, e.target.value);
+  };
 
   // TODO: Move the fetches into their own utility module for better management
   useEffect(() => {
@@ -68,11 +56,7 @@ function CountryField({ name, field, section, index, ...props }) {
   return (
     <>
       <label htmlFor={field}>{name}</label>
-      <select
-        id={field}
-        onChange={e => set(section, index, field, e.target.value)}
-        {...props}
-      >
+      <select id={field} onChange={handleChange} {...props}>
         {countries.map(country => {
           return (
             <option key={country.name.common} value={country.name.common}>
