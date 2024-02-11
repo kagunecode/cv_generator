@@ -81,12 +81,11 @@ function DateField({
   fieldTwo,
   index,
   field,
-  set,
   valueOne,
   valueTwo,
   useMonth = false,
-  ...props
 }) {
+  const set = useData(state => state.updateItem);
   return (
     <>
       <label htmlFor="">{name}</label>
