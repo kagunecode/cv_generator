@@ -1,11 +1,11 @@
 import { useData } from '../store';
 
 export default function ImageUpload() {
-  const updateGeneral = useData(state => state.updateGeneral);
+  const updateItem = useData(state => state.updateItem);
 
   const handleImageUpload = img => {
     const imageUrl = URL.createObjectURL(img);
-    updateGeneral('photo', imageUrl);
+    updateItem('generalInfo', 0, 'photo', imageUrl);
   };
 
   return (
