@@ -59,13 +59,16 @@ function SkillRender() {
   return (
     <AnimatePresence>
       <div className="flex h-full flex-col">
-        <div id="input-container" className="grid h-14 grid-cols-5">
+        <div
+          id="input-container"
+          className="mb-10 grid h-16 grid-cols-5 xl:mb-0"
+        >
           <input
             onChange={e => setSkillName(e.target.value)}
-            className="col-span-2 h-full w-full border border-zinc-300 px-1 text-xl"
+            className="col-span-5 h-8 w-full border border-zinc-300 px-1 text-sm xl:col-span-2 xl:h-full xl:text-xl"
             value={skillName}
           />
-          <div className="text-md col-span-2 ml-2 grid grid-cols-4 grid-rows-1">
+          <div className="text-md col-span-5 grid grid-cols-2 grid-rows-1 xl:col-span-2 xl:ml-2 xl:grid-cols-4">
             {skillLevels.map((skillLevel, i) => {
               return (
                 <button
@@ -84,13 +87,13 @@ function SkillRender() {
           </div>
           <button
             onClick={handleAddSkill}
-            className="col-span-1 ml-2 border font-semibold text-slate-700 duration-200 hover:bg-emphasis-500 hover:text-black"
+            className="col-span-5 h-10 border font-semibold text-slate-700 duration-200 hover:bg-emphasis-500 hover:text-black xl:col-span-1 xl:ml-2 xl:h-full"
           >
             Add Skill
           </button>
         </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-4">
+        <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {skills.map(skill => {
             return (
               <SkillCard key={skill.id}>
