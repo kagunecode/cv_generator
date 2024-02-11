@@ -130,14 +130,14 @@ function PDFDocument({ generalInfo, education, experience, skills }) {
 }
 
 function PreviewCV() {
-  const [generalInfo, setGeneralInfo] = useState(cvData.generalInfo);
+  const [generalInfo, setGeneralInfo] = useState(cvData.generalInfo[0]);
   const [experience, setExperience] = useState(cvData.experience);
   const [education, setEducation] = useState(cvData.education);
   const [skills, setSkills] = useState(cvData.skills);
 
   const [dataGeneralInfo, dataExperience, dataEducation, dataSkills] = useData(
     state => [
-      state.generalInfo,
+      state.generalInfo[0],
       state.experience,
       state.education,
       state.skills,
