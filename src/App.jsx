@@ -24,17 +24,17 @@ function App() {
   const { status, setStatus } = useSidebarContext();
 
   return (
-    <>
+    <div className="relative h-full">
       <AnimatePresence mode="wait">{status && <Sidebar />}</AnimatePresence>
+      {location.pathname != '/' && <Navbar />}
       <motion.div
-        className="relative h-screen"
+        className="h-full"
         initial={false}
         variants={variants}
-        animate={status ? 'open' : 'false'}
+        animate={status ? 'open' : 'closed'}
         transition={{ duration: 0.6, ease: 'easeInOut' }}
       >
-        {location.pathname != '/' && <Navbar />}
-        <div className="grid h-full w-[calc(100vw-3rem)] translate-x-[3rem] grid-cols-3 p-3">
+        <div className="h-full w-[calc(100vw-3rem)] translate-x-[3rem] p-3 md:grid-cols-3 lg:grid">
           <div className="col-span-2 overflow-y-auto overflow-x-hidden">
             <div>
               <Routes location={location} key={location.pathname}>
@@ -54,7 +54,7 @@ function App() {
           )}
         </div>
       </motion.div>
-    </>
+    </div>
   );
 }
 
