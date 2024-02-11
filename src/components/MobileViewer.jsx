@@ -1,8 +1,6 @@
-import { useState } from 'react';
-
 import PreviewCV from './PreviewCV';
 
-export default function MobileViewer({ showPreview, setPreview }) {
+export default function MobileViewer({ setPreview }) {
   return (
     <>
       <button
