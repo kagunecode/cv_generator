@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { Field, DateField } from '../components/Field';
 import Card from '../components/Card';
 import { useData } from '../store';
+import commonProps from '../utilities/commonProps';
 
 function Experience() {
   const addItem = useData(state => state.addItem);
@@ -61,24 +62,18 @@ function JobRender() {
           <Field
             arraySet
             name="Company"
-            section="experience"
-            index={job.id}
             field="company"
-            set={updateItem}
             value={job.company}
-            className="h-8 w-full border border-zinc-300 px-1"
+            {...commonProps(job, updateItem)}
           />
         </div>
         <div className="flex flex-col p-2 text-sm lg:text-lg">
           <Field
             arraySet
             name="Position"
-            section="experience"
-            index={job.id}
             field="position"
-            set={updateItem}
             value={job.position}
-            className="h-8 w-full border border-zinc-300 px-1"
+            {...commonProps(job, updateItem)}
           />
         </div>
         <div className="col-span-2 grid grid-cols-2 text-sm lg:text-lg xl:col-span-1">
@@ -113,12 +108,9 @@ function JobRender() {
           <Field
             arraySet
             name="Description"
-            section="experience"
-            index={job.id}
             field="description"
-            set={updateItem}
             value={job.description}
-            className="h-8 w-full border border-zinc-300 px-1"
+            {...commonProps(job, updateItem)}
           />
         </div>
       </Card>
