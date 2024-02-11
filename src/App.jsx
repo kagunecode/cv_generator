@@ -51,7 +51,7 @@ function App() {
         transition={{ duration: 0.6, ease: 'easeInOut' }}
       >
         <div className="h-full w-[calc(100vw-3rem)] translate-x-[3rem] p-3 md:grid-cols-3 lg:grid">
-          <div className="col-span-2 overflow-y-auto overflow-x-hidden">
+          <div className="col-span-2 h-full overflow-y-auto overflow-x-hidden">
             <div>
               <Routes location={location} key={location.pathname}>
                 <Route path="/general" element={<General />} />
