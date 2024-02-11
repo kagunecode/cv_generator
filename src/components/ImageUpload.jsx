@@ -9,7 +9,7 @@ export default function ImageUpload() {
   };
 
   return (
-    <div className="flex h-[50%] justify-center self-center align-middle">
+    <div className="mb-4 flex h-[50%] justify-center self-center align-middle">
       <label
         className="mb-2 cursor-pointer self-center border px-20 py-8 font-bold text-slate-500 duration-150 hover:bg-emphasis-500 hover:text-black"
         htmlFor="image_upload"
