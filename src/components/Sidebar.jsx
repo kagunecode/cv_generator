@@ -35,9 +35,9 @@ export default function Sidebar() {
     setStatus(!status);
   };
   return (
-    <div className="relative w-[25vw]">
+    <div className="relative md:w-[40vw] lg:w-[25vw]">
       <motion.div
-        className="absolute z-20 flex h-screen w-full bg-emphasis-500"
+        className="fixed z-20 flex h-[100dvh] w-full bg-emphasis-500 md:absolute md:left-0 md:top-0"
         variants={menuSlide}
         initial="initial"
         animate="enter"
