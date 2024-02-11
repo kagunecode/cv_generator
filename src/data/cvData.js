@@ -1,17 +1,20 @@
 import defaultPhoto from '/images/default.jpg';
 
 const cvData = {
-  generalInfo: {
-    fullname: 'John Doe',
-    age: 'November 16 - 1998',
-    title: 'Web Developer',
-    email: 'jhondoe@gmail.com',
-    phone: '999999999',
-    country: 'United States',
-    city: 'New York',
-    about: 'Say something about you!',
-    photo: defaultPhoto,
-  },
+  generalInfo: [
+    {
+      id: 0,
+      fullname: 'John Doe',
+      age: 'November 16 - 1998',
+      title: 'Web Developer',
+      email: 'jhondoe@gmail.com',
+      phone: '999999999',
+      country: 'United States',
+      city: 'New York',
+      about: 'Say something about you!',
+      photo: defaultPhoto,
+    },
+  ],
 
   experience: [
     {

@@ -7,11 +7,6 @@ const useData = create(set => ({
   education: cvData.education,
   skills: cvData.skills,
 
-  updateGeneral: (field, value) =>
-    set(state => ({
-      generalInfo: { ...state.generalInfo, [field]: value },
-    })),
-
   updateItem: (section, id, field, value) =>
     set(state => ({
       [section]: state[section].map(item =>
