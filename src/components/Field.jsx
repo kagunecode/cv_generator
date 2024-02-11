@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useData } from '../store';
-import axios from 'axios';
+import countryFetch from '../utilities/countryFetch';
 
 function Field({
   name,
@@ -35,24 +35,10 @@ function CountryField({ name, field, section, index, ...props }) {
     set(section, index, field, e.target.value);
   };
 
-  // TODO: Move the fetches into their own utility module for better management
   useEffect(() => {
-    axios.get('https://restcountries.com/v3.1/all').then(response => {
-      const alphCountry = response.data.sort((a, b) => {
-        const nameA = a.name.common;
-        const nameB = b.name.common;
-
-        if (nameA < nameB) {
-          return -1;
-        }
-        if (nameA > nameB) {
-          return 1;
-        }
-        return 0;
-      });
-      setCountries(alphCountry);
-    });
+    countryFetch(setCountries);
   }, []);
+
   return (
     <>
       <label htmlFor={field}>{name}</label>
