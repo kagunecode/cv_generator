@@ -22,7 +22,6 @@ function GeneralForm() {
     <div className="row-auto mr-5 mt-5 grid flex-1 grid-cols-1 border bg-zinc-50 p-5 text-sm lg:text-lg">
       <div className="flex flex-col">
         <Field
-          arraySet
           name="Full Name"
           field="fullname"
           className="mr-4 h-8 border border-zinc-300 px-1 text-sm lg:text-lg"
@@ -32,7 +31,6 @@ function GeneralForm() {
       </div>
       <div className="flex flex-col">
         <Field
-          arraySet
           name="Age"
           field="age"
           className="mr-4 h-8 border border-zinc-300 px-1 text-sm lg:text-lg"
@@ -43,7 +41,6 @@ function GeneralForm() {
       </div>
       <div className="flex flex-col">
         <Field
-          arraySet
           name="Title"
           field="title"
           className="mr-4 h-8 border border-zinc-300 px-1 text-sm lg:text-lg"
@@ -53,7 +50,6 @@ function GeneralForm() {
       </div>
       <div className="flex flex-col">
         <Field
-          arraySet
           name="Email"
           field="email"
           className="mr-4 h-8 border border-zinc-300 px-1 text-sm lg:text-lg"
@@ -63,7 +59,6 @@ function GeneralForm() {
       </div>
       <div className="flex flex-col">
         <Field
-          arraySet
           name="Phone"
           field="phone"
           className="mr-4 h-8 border border-zinc-300 px-1 text-sm lg:text-lg"
@@ -82,7 +77,6 @@ function GeneralForm() {
       </div>
       <div className="flex flex-col">
         <Field
-          arraySet
           name="City"
           field="city"
           className="mr-4 h-8 border border-zinc-300 px-1 text-sm lg:text-lg"
