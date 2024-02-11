@@ -1,6 +1,7 @@
 // Libraries
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
 
 // Components
 import Navbar from './components/Navbar';
@@ -18,6 +19,7 @@ import { useSidebarContext } from './contexts/SidebarContext';
 
 function App() {
   const location = useLocation();
+  const [showPreview, setPreview] = useState(false);
   const variants = {
     open: { filter: 'blur(16px)', userSelect: 'none', pointerEvents: 'none' },
     closed: {},
@@ -28,8 +30,18 @@ function App() {
     <div className="relative h-full">
       <AnimatePresence mode="wait">{status && <Sidebar />}</AnimatePresence>
       {location.pathname != '/' && <Navbar />}
-      <div className="absolute h-full w-full lg:hidden">
-        <MobileViewer />
+      <button
+        onClick={() => setPreview(true)}
+        className="fixed bottom-0 right-0 z-10 m-5 rounded-full bg-emphasis-500 p-5 font-bold lg:hidden"
+      >
+        See
+      </button>
+      <div
+        className={`fixed z-50 h-full w-full ${
+          showPreview ? 'block' : 'hidden'
+        }`}
+      >
+        <MobileViewer setPreview={setPreview} showPreview={showPreview} />
       </div>
       <motion.div
         className="h-full"
