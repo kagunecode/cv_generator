@@ -1,20 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useData } from '../store';
-import {
-  PDFViewer,
-  Document,
-  Page,
-  Text,
-  View,
-  Image,
-  StyleSheet,
-  PDFDownloadLink,
-  Font,
-} from '@react-pdf/renderer';
+import { PDFViewer, PDFDownloadLink, Font } from '@react-pdf/renderer';
 import cvData from '../data/cvData';
 import Inter from '/fonts/Inter.ttf';
 import InterBold from '/fonts/Inter-Bold.ttf';
 import InterItalic from '/fonts/Inter-Italic.ttf';
+import PDFDocument from './PDFDocument';
 
 Font.register({
   family: 'Inter',
@@ -24,110 +15,6 @@ Font.register({
     { src: InterItalic, fontStyle: 'italic' },
   ],
 });
-
-const styles = StyleSheet.create({
-  page: {
-    fontFamily: 'Inter',
-    padding: 20,
-    backgroundColor: '#f4f4f4',
-  },
-  header: {
-    backgroundColor: '#FFC107',
-    color: 'black',
-    padding: 20,
-    marginBottom: 20,
-    display: 'flex',
-    alignItems: 'center',
-    flexDirection: 'column',
-    borderRadius: '20px',
-  },
-  profileImage: {
-    borderRadius: '50%',
-    width: 100,
-    height: 100,
-    marginBottom: 10,
-    objectFit: 'cover',
-  },
-  intro: {
-    textAlign: 'center',
-    marginBottom: 20,
-  },
-  section: {
-    marginBottom: 20,
-  },
-  subheader: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 10,
-  },
-  text: {
-    fontSize: 12,
-    marginBottom: 8,
-  },
-  bold: {
-    fontWeight: 'bold',
-  },
-});
-
-function PDFDocument({ generalInfo, education, experience, skills }) {
-  return (
-    <Document>
-      <Page size="A4" style={styles.page}>
-        <View style={styles.header}>
-          {generalInfo.photo && (
-            <Image style={styles.profileImage} src={generalInfo.photo} />
-          )}
-          <Text style={{ fontSize: 24, fontWeight: 'bold', color: 'black' }}>
-            {generalInfo.fullname}
-          </Text>
-          <Text style={{ fontSize: 16, fontStyle: 'italic', color: 'black' }}>
-            {generalInfo.title}
-          </Text>
-          <Text
-            style={styles.text}
-          >{`${generalInfo.age}, ${generalInfo.country}, ${generalInfo.city}`}</Text>
-          <Text style={styles.text}>{generalInfo.email}</Text>
-          <Text style={styles.text}>{generalInfo.phone}</Text>
-          <Text style={styles.intro}>{generalInfo.about}</Text>
-        </View>
-
-        <View style={styles.section}>
-          <Text style={styles.subheader}>Experience</Text>
-          {experience.map(job => (
-            <View key={job.id} style={styles.text}>
-              <Text style={styles.bold}>{job.position}</Text>
-              <Text>{job.company}</Text>
-              <Text>{`${job.startDate} ${job.startYear} - ${job.endDate} ${job.endYear}`}</Text>
-              <Text>{job.description}</Text>
-            </View>
-          ))}
-        </View>
-
-        <View style={styles.section}>
-          <Text style={styles.subheader}>Education</Text>
-          {education.map(ed => (
-            <View key={ed.id} style={styles.text}>
-              <Text style={styles.bold}>{ed.title}</Text>
-              <Text>{ed.institution}</Text>
-              <Text>{`${ed.start} - ${ed.end}`}</Text>
-              <Text>{ed.degree}</Text>
-            </View>
-          ))}
-        </View>
-
-        <View style={styles.section}>
-          <Text style={styles.subheader}>Skills</Text>
-          {skills.map(skill => (
-            <View key={skill.id} style={styles.text}>
-              <Text style={styles.bold}>{skill.name}</Text>
-              <Text>{skill.expertise}</Text>
-            </View>
-          ))}
-        </View>
-      </Page>
-    </Document>
-  );
-}
 
 function PreviewCV() {
   const [generalInfo, setGeneralInfo] = useState(cvData.generalInfo[0]);
@@ -172,9 +59,7 @@ function PreviewCV() {
               />
             }
           >
-            {({ blob, url, loading, error }) =>
-              loading ? 'Loading...' : 'Download'
-            }
+            {({ loading }) => (loading ? 'Loading...' : 'Download')}
           </PDFDownloadLink>
         </div>
       </div>
