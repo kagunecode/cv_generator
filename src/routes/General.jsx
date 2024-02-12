@@ -24,7 +24,6 @@ function GeneralForm() {
         <Field
           name="Full Name"
           field="fullname"
-          className="mr-4 h-8 border border-zinc-300 px-1 text-sm lg:text-lg"
           value={generalInfo.fullname}
           {...commonProps('generalInfo', generalInfo)}
         />
@@ -33,7 +32,6 @@ function GeneralForm() {
         <Field
           name="Age"
           field="age"
-          className="mr-4 h-8 border border-zinc-300 px-1 text-sm lg:text-lg"
           value={generalInfo.age}
           desc="(no specific formatting)"
           {...commonProps('generalInfo', generalInfo)}
@@ -43,7 +41,6 @@ function GeneralForm() {
         <Field
           name="Title"
           field="title"
-          className="mr-4 h-8 border border-zinc-300 px-1 text-sm lg:text-lg"
           value={generalInfo.title}
           {...commonProps('generalInfo', generalInfo)}
         />
@@ -52,7 +49,6 @@ function GeneralForm() {
         <Field
           name="Email"
           field="email"
-          className="mr-4 h-8 border border-zinc-300 px-1 text-sm lg:text-lg"
           value={generalInfo.email}
           {...commonProps('generalInfo', generalInfo)}
         />
@@ -61,7 +57,6 @@ function GeneralForm() {
         <Field
           name="Phone"
           field="phone"
-          className="mr-4 h-8 border border-zinc-300 px-1 text-sm lg:text-lg"
           value={generalInfo.phone}
           {...commonProps('generalInfo', generalInfo)}
         />
@@ -70,7 +65,6 @@ function GeneralForm() {
         <CountryField
           name="Country"
           field="country"
-          className="h-8 border border-zinc-300 px-1 text-sm lg:text-lg"
           value={generalInfo.country}
           {...commonProps('generalInfo', generalInfo)}
         />
@@ -79,7 +73,6 @@ function GeneralForm() {
         <Field
           name="City"
           field="city"
-          className="mr-4 h-8 border border-zinc-300 px-1 text-sm lg:text-lg"
           value={generalInfo.city}
           {...commonProps('generalInfo', generalInfo)}
         />
@@ -94,7 +87,7 @@ function GeneralForm() {
             {...commonProps(
               'generalInfo',
               generalInfo,
-              'h-40 border border-zinc-300 p-1 text-sm lg:text-lg',
+              'h-20 md:h-[240px] border border-zinc-300 p-1 text-sm lg:text-lg',
             )}
           />
         </div>
