@@ -7,11 +7,11 @@ function Items() {
   const itemList = sectionInfo.map(tab => {
     return (
       <li
-        className="group relative overflow-hidden px-3 font-semibold text-slate-400 duration-200 hover:cursor-default hover:text-slate-800"
+        className="group relative overflow-hidden px-3 font-semibold duration-200"
         key={tab.tabName}
       >
         <Link to={tab.tabUrl}>{tab.tabName}</Link>
-        <div className="absolute left-0 z-[-10] h-full w-full bg-emphasis-500 duration-150 group-hover:translate-y-[-1.5rem]"></div>
+        <div className="absolute left-0 z-[-10] h-full w-full bg-emphasis-500 duration-200 group-hover:translate-y-[-1.5rem]"></div>
       </li>
     );
   });
@@ -36,10 +36,10 @@ function Navbar() {
     >
       <Items />
       <Link
-        className="ml-2 rotate-90 px-5 text-3xl font-bold duration-200 hover:rotate-180 hover:cursor-pointer"
+        className="ml-2 rotate-90 animate-pulse px-5 text-3xl font-bold text-emphasis-500 duration-200 hover:animate-none hover:cursor-pointer hover:text-black"
         onClick={handleSidebarToggle}
       >
-        L
+        K
       </Link>
     </div>
   );
