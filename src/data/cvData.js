@@ -5,7 +5,7 @@ const cvData = {
     {
       id: 0,
       fullname: 'John Doe',
-      age: 'November 16 - 1998',
+      age: '25',
       title: 'Web Developer',
       email: 'jhondoe@gmail.com',
       phone: '999999999',
@@ -34,7 +34,7 @@ const cvData = {
       id: 0,
       institution: 'Harvard University',
       title: 'Electronic Engineer',
-      location: 'Cambridge - Massachussets',
+      location: 'Cambridge - Massachusetts',
       start: '2017',
       end: '2023',
       degree: 'Web Designer',
