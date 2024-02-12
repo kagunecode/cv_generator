@@ -84,8 +84,8 @@ function GeneralForm() {
           {...commonProps('generalInfo', generalInfo)}
         />
       </div>
-      <div className="md:grid md:grid-cols-2">
-        <div className="flex flex-col">
+      <div className="md:grid md:grid-cols-3">
+        <div className="flex flex-col md:col-span-2">
           <Field
             name="About You"
             field="about"
