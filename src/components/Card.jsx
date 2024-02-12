@@ -1,6 +1,6 @@
 import { motion as m } from 'framer-motion';
 import { useData } from '../store';
-import { cardAnimations, cardVariants } from '../variants';
+import { cardAnimations, cardVariants, skillCardAnimations } from '../variants';
 import TrashCanIcon from '../icons/TrashCanIcon';
 import ArrowIcon from '../icons/ArrowIcon';
 
@@ -42,3 +42,19 @@ export default function Card({ title, item, section, children }) {
     </m.div>
   );
 }
+
+function SkillCard({ children }) {
+  return (
+    <m.div
+      variants={skillCardAnimations}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      className="flex h-[7rem] w-full flex-col border bg-zinc-50 p-7"
+    >
+      {children}
+    </m.div>
+  );
+}
+
+export { SkillCard };
