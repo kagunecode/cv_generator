@@ -23,18 +23,6 @@ const sectionInfo = [
     tabUrl: '/skills',
     isActive: false,
   },
-  /*   {
-    id: 5,
-    tabName: 'Other',
-    tabUrl: 'other',
-    isActive: false,
-  },
-  {
-    id: 6,
-    tabName: 'Customize',
-    tabUrl: 'customize',
-    isActive: false,
-  }, */
 ];
 
 export default sectionInfo;
