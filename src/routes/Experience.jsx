@@ -1,29 +1,14 @@
 import { AnimatedPage } from '../components/AnimatedPage';
 import { AnimatePresence } from 'framer-motion';
-import { v4 as uuidv4 } from 'uuid';
 
 import { Field, DateField } from '../components/Field';
 import Card from '../components/Card';
 import { useData } from '../store';
 import commonProps from '../utilities/commonProps';
+import { addJob } from '../utilities/addItems';
 
 function Experience() {
   const addItem = useData(state => state.addItem);
-
-  function handleAddJob() {
-    const newJob = {
-      id: uuidv4(),
-      position: '',
-      company: '',
-      startDate: 'January',
-      startYear: '2021',
-      endDate: 'January',
-      endYear: '2024',
-      description: '',
-      status: true,
-    };
-    addItem('experience', newJob);
-  }
 
   return (
     <AnimatedPage>
@@ -34,8 +19,8 @@ function Experience() {
       </div>
       <div className="flex justify-center px-6">
         <button
-          onClick={handleAddJob}
-          className="border px-10 py-2 text-sm font-semibold text-slate-700 duration-200 hover:bg-emphasis-500 hover:text-black lg:text-lg"
+          onClick={() => addJob(addItem)}
+          className="border px-5 py-2 text-sm font-semibold duration-200 hover:bg-emphasis-500 lg:px-8 lg:text-lg"
         >
           Add Job
         </button>
@@ -45,10 +30,7 @@ function Experience() {
 }
 
 function JobRender() {
-  const [experience, updateItem] = useData(state => [
-    state.experience,
-    state.updateItem,
-  ]);
+  const experience = useData(state => state.experience);
 
   const jobs = experience.map(job => {
     return (
@@ -64,7 +46,7 @@ function JobRender() {
             name="Company"
             field="company"
             value={job.company}
-            {...commonProps(job, updateItem)}
+            {...commonProps('experience', job)}
           />
         </div>
         <div className="flex flex-col p-2 text-sm lg:text-lg">
@@ -73,14 +55,13 @@ function JobRender() {
             name="Position"
             field="position"
             value={job.position}
-            {...commonProps(job, updateItem)}
+            {...commonProps('experience', job)}
           />
         </div>
         <div className="col-span-2 grid grid-cols-2 text-sm lg:text-lg xl:col-span-1">
           <div className="flex flex-col p-2 text-sm lg:text-lg">
             <DateField
               name="From"
-              set={updateItem}
               section="experience"
               index={job.id}
               field="startDate"
@@ -93,7 +74,6 @@ function JobRender() {
           <div className="flex flex-col p-2 text-sm lg:text-lg">
             <DateField
               name="To"
-              set={updateItem}
               section="experience"
               index={job.id}
               field="endDate"
@@ -110,7 +90,7 @@ function JobRender() {
             name="Description"
             field="description"
             value={job.description}
-            {...commonProps(job, updateItem)}
+            {...commonProps('experience', job)}
           />
         </div>
       </Card>
