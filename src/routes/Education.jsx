@@ -1,43 +1,29 @@
 import { AnimatedPage } from '../components/AnimatedPage';
 import { AnimatePresence } from 'framer-motion';
-import { v4 as uuidv4 } from 'uuid';
 
 import Card from '../components/Card';
 import { Field, DateField } from '../components/Field';
 import { useData } from '../store';
+import { addEducation } from '../utilities/addItems';
+import commonProps from '../utilities/commonProps';
 
 function Education() {
   const addItem = useData(state => state.addItem);
-  const newData = {
-    id: 0,
-    institution: '',
-    title: '',
-    location: '',
-    start: '',
-    end: '',
-    degree: '',
-    status: true,
-  };
-
-  function handleAddEducation() {
-    const newEd = { ...newData, id: uuidv4() };
-    addItem('education', newEd);
-  }
 
   return (
     <AnimatedPage>
       <h1 className="text-5xl font-semibold">Education</h1>
       <p>
-        Degrees, certificates and proven educational experiences, add as many as
+        Degrees, certificates and proven educational experiences. Add as many as
         you can!
       </p>
-      <div className="mr-2 grid gap-y-4 p-4 text-sm lg:text-lg">
+      <div className="grid gap-y-4 p-4 text-sm lg:text-lg">
         <FieldsRender />
       </div>
-      <div className="flex justify-center px-6">
+      <div className="flex justify-center">
         <button
-          onClick={handleAddEducation}
-          className="border px-10 py-2 font-semibold text-slate-700 duration-200 hover:bg-emphasis-500 hover:text-black"
+          onClick={() => addEducation(addItem)}
+          className="border px-4 py-2 font-semibold duration-200 hover:bg-emphasis-500"
         >
           Add Education
         </button>
@@ -47,48 +33,36 @@ function Education() {
 }
 
 function FieldsRender() {
-  const [education, updateItem] = useData(state => [
-    state.education,
-    state.updateItem,
-  ]);
+  const education = useData(state => state.education);
 
   const edu = education.map(ed => {
     return (
       <Card
-        title={`Studies at ${ed.institution}`}
+        title={`${ed.title} at ${ed.institution}`}
         item={ed}
         section="education"
         key={ed.id}
       >
         <div className="flex flex-col p-2 text-sm lg:text-lg">
           <Field
-            arraySet
             name="Institution"
-            section="education"
-            index={ed.id}
             field="institution"
-            set={updateItem}
             value={ed.institution}
-            className="h-8 w-full border border-zinc-300 px-1"
+            {...commonProps('education', ed)}
           />
         </div>
         <div className="flex flex-col p-2 text-sm lg:text-lg">
           <Field
-            arraySet
             name="Title"
-            section="education"
-            index={ed.id}
             field="title"
-            set={updateItem}
             value={ed.title}
-            className="h-8 w-full border border-zinc-300 px-1"
+            {...commonProps('education', ed)}
           />
         </div>
         <div className="col-span-2 grid grid-cols-2 text-sm md:col-span-1 lg:text-lg">
-          <div className="col flex flex-col p-2 text-sm lg:text-lg">
+          <div className="flex flex-col p-2 text-sm lg:text-lg">
             <DateField
               name="From"
-              set={updateItem}
               section="education"
               index={ed.id}
               fieldTwo="start"
@@ -98,7 +72,6 @@ function FieldsRender() {
           <div className="flex flex-col p-2 text-sm lg:text-lg">
             <DateField
               name="To"
-              set={updateItem}
               section="education"
               index={ed.id}
               fieldTwo="end"
@@ -108,14 +81,10 @@ function FieldsRender() {
         </div>
         <div className="col-span-2 flex flex-col p-2 text-sm md:col-span-1 lg:text-lg">
           <Field
-            arraySet
             name="Degree"
-            section="education"
-            index={ed.id}
             field="degree"
-            set={updateItem}
             value={ed.degree}
-            className="h-8 w-full border border-zinc-300 px-1"
+            {...commonProps('education', ed)}
           />
         </div>
       </Card>
