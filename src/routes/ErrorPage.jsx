@@ -8,17 +8,17 @@ function ErrorPage() {
         404
       </h1>
       <div className="relative">
-        <h1 className="animate-errortext select-none text-[20rem] font-semibold text-white">
+        <h1 className="animate-errortext select-none text-[10rem] font-semibold text-white xl:text-[20rem]">
           404
         </h1>
-        <h1 className="absolute top-0 text-[20rem] font-semibold text-black">
+        <h1 className="absolute top-0 text-[10rem] font-semibold text-black xl:text-[20rem]">
           404
         </h1>
       </div>
-      <p className="text-4xl font-light text-slate-700">Page not found</p>
+      <p className="text-2xl font-light md:text-4xl">Page not found</p>
       <Link
         className="z-10 mt-4 bg-black px-5 py-2 text-xl font-semibold text-white duration-200 hover:bg-white hover:text-black"
-        to={'/'}
+        to={'/general'}
       >
         Go Home
       </Link>
